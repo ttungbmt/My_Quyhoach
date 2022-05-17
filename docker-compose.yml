@@ -1,0 +1,19 @@
+version: '3.7'
+
+services:
+### Geoserver ##################################
+    geoserver:
+      build:
+        context: ./osm-geoserver
+      environment:
+        - TOMCAT_USER=${TOMCAT_USER}
+        - TOMCAT_PASS=${TOMCAT_PASS}
+        - GEOSERVER_ADMIN_USER=${GEOSERVER_ADMIN_USER}
+        - GEOSERVER_ADMIN_PASSWORD=${GEOSERVER_ADMIN_PASSWORD}
+        - STABLE_EXTENSIONS=${STABLE_EXTENSIONS}
+        - MAXIMUM_MEMORY=10G
+        - XFRAME_OPTIONS="false"
+#      volumes:
+#        - ./osm-geoserver:/opt/geoserver/data_dir
+      ports:
+        - 8600:8080
