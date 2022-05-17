@@ -4,7 +4,7 @@ services:
 ### Geoserver ##################################
     geoserver:
       build:
-        context: ./osm-geoserver
+        context: ./geoserver
       environment:
         - TOMCAT_USER=${TOMCAT_USER}
         - TOMCAT_PASS=${TOMCAT_PASS}
