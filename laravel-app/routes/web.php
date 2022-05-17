@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SinglePageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('{path?}', SinglePageController::class)->where('path', '[a-zA-Z0-9-/]+');
 
 Route::get('/', function () {
     return view('welcome');
