@@ -46,7 +46,7 @@ class HcTinhResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('ma')->label(__('app.matinh'))->required(),
+                TextInput::make('ma')->label(__('app.matinh'))->unique()->required(),
                 TextInput::make('ten')->label(__('app.tentinh'))->required(),
                 Select::make('cap')->label(__('app.cap_hc'))->options(HcTinh::getDirCap()),
             ]);

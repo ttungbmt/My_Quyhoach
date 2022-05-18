@@ -59,7 +59,7 @@ class HcPhuongResource extends Resource
                     ->disabled(fn(Closure $get) => blank($get('ma_tp')))
                     ->searchable()
                     ->required(),
-                TextInput::make('ma')->label(__('app.maphuong'))->required(),
+                TextInput::make('ma')->label(__('app.maphuong'))->unique()->required(),
                 TextInput::make('ten')->label(__('app.tenphuong'))->required(),
                 Select::make('cap')->label(__('app.cap_hc'))
                     ->label(__('app.cap_hc'))
