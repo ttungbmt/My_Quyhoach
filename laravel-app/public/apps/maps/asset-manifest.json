@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/apps/maps/static/css/main.c1e63810.css",
-    "main.js": "/apps/maps/static/js/main.92b4a251.js",
+    "main.js": "/apps/maps/static/js/main.4b902ec6.js",
     "static/js/646.c621dde5.chunk.js": "/apps/maps/static/js/646.c621dde5.chunk.js",
     "static/js/320.4e009db4.chunk.js": "/apps/maps/static/js/320.4e009db4.chunk.js",
     "static/js/553.901f4247.chunk.js": "/apps/maps/static/js/553.901f4247.chunk.js",
@@ -16,6 +16,6 @@
   },
   "entrypoints": [
     "static/css/main.c1e63810.css",
-    "static/js/main.92b4a251.js"
+    "static/js/main.4b902ec6.js"
   ]
 }
