@@ -41,7 +41,7 @@ class LoaidatResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('ma')->label(__('app.ma'))->required(),
+                TextInput::make('ma')->label(__('app.ma'))->unique()->required(),
                 TextInput::make('ten')->label(__('app.ten'))->required(),
                 ColorPicker::make('fill_color')->label(__('app.fill_color'))->required(),
             ]);

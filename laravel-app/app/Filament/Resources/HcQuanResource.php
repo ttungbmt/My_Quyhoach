@@ -5,6 +5,8 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\HcQuanResource\Pages;
 use App\Filament\Resources\HcQuanResource\RelationManagers;
 use App\Models\HcQuan;
+use App\Models\HcTinh;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Form;
 use Filament\Resources\Table;
@@ -45,9 +47,10 @@ class HcQuanResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('ma')->label(__('app.maquan')),
+                Select::make('ma_tp')->label(__('app.hc_tinh'))->options(fn() => HcTinh::getDirMatinh())->searchable()->required(),
+                TextInput::make('ma')->unique()->label(__('app.maquan')),
                 TextInput::make('ten')->label(__('app.tenquan')),
-                TextInput::make('cap')->label(__('app.cap_hc')),
+                Select::make('cap')->label(__('app.cap_hc'))->options(HcQuan::getDirCap()),
             ]);
     }
 
