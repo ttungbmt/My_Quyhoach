@@ -10,6 +10,8 @@ use Filament\Forms\Components\TextInput;
 use Filament\Resources\Form;
 use Filament\Resources\Table;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\SelectFilter;
+use FilamentPro\Filters\TextFilter;
 use FilamentPro\Resources\Resource;
 
 class HcTinhResource extends Resource
@@ -63,7 +65,10 @@ class HcTinhResource extends Resource
                 TextColumn::make('phuongs_count')->counts('phuongs')->label(__('app.phuongs_count'))->sortable()->visibleFrom('md'),
             ])
             ->filters([
-                //
+                TextFilter::make('ma')->label(__('app.matinh')),
+                TextFilter::make('ten')->label(__('app.tentinh')),
+                SelectFilter::make('cap')->label(__('app.cap_hc'))
+                    ->options(HcTinh::getDirCap())
             ]);
     }
 

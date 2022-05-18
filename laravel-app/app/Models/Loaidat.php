@@ -11,4 +11,5 @@ class Loaidat extends Model
 
     protected $fillable = ['ten', 'ma', 'fill_color'];
 
+    public $timestamps = false;
 }

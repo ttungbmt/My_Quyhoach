@@ -9,6 +9,8 @@ class HcBase extends Model
 {
     use QueryCacheable;
 
+    public $timestamps = false;
+
     public $cacheFor = 3600*24*30;
 
     protected static $flushCacheOnUpdate = true;
