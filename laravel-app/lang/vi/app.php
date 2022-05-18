@@ -22,4 +22,6 @@ return [
     'ma' => 'Mã',
     'ten' => 'Tên',
     'fill_color' => 'Màu nền',
+
+    'thuadat' => 'Thửa đất',
 ];
