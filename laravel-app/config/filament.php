@@ -220,7 +220,7 @@ return [
     |
     */
 
-    'favicon' => asset('images/logos/favicon.png'),
+    'favicon' => '/images/logos/favicon.png',
 
     /*
     |--------------------------------------------------------------------------
