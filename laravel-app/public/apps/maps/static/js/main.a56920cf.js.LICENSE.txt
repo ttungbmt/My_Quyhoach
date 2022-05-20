@@ -31,6 +31,15 @@ object-assign
  */
 
 /*!
+ * leaflet-extra-markers
+ * Custom Markers for Leaflet JS based on Awesome Markers
+ * Leaflet ExtraMarkers
+ * https://github.com/coryasilva/Leaflet.ExtraMarkers/
+ * @author coryasilva <https://github.com/coryasilva>
+ * @version 1.2.1
+ */
+
+/*!
  * perfect-scrollbar v1.5.3
  * Copyright 2021 Hyunje Jun, MDBootstrap and Contributors
  * Licensed under MIT

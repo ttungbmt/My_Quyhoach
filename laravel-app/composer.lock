@@ -225,6 +225,66 @@
             "time": "2022-05-11T12:38:11+00:00"
         },
         {
+            "name": "bosnadev/database",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bosnadev/database.git",
+                "reference": "98502a7ed37cd016c6b7644b33f2396e0559eed2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bosnadev/database/zipball/98502a7ed37cd016c6b7644b33f2396e0559eed2",
+                "reference": "98502a7ed37cd016c6b7644b33f2396e0559eed2",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/dbal": "^2.5|^3.0",
+                "illuminate/database": "^5.0|^6.0|^7.0|^8.0|^9.0",
+                "php": ">=5.5",
+                "ramsey/uuid": "^3.0|^4.0"
+            },
+            "require-dev": {
+                "codeclimate/php-test-reporter": "^0.3.2",
+                "mockery/mockery": "0.9.*",
+                "phpunit/phpunit": "~4.5"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Bosnadev\\Database\\": "src/Bosnadev/Database/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mirza Pasic",
+                    "email": "mirza@bosnadev.com"
+                },
+                {
+                    "name": "Peter Haza",
+                    "email": "peter.haza@gmail.com"
+                }
+            ],
+            "description": "Eloquent Extended, added some PostgreSQL features",
+            "homepage": "https://bosnadev.com",
+            "keywords": [
+                "database",
+                "eloquent",
+                "laravel",
+                "postgresql"
+            ],
+            "support": {
+                "issues": "https://github.com/bosnadev/database/issues",
+                "source": "https://github.com/bosnadev/database/tree/master"
+            },
+            "time": "2022-04-21T07:41:14+00:00"
+        },
+        {
             "name": "brick/math",
             "version": "0.9.3",
             "source": {
@@ -1160,16 +1220,16 @@
         },
         {
             "name": "filament/filament",
-            "version": "v2.12.10",
+            "version": "v2.12.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-filament/admin.git",
-                "reference": "adaa3273e7b9cc1875788cc692d1f8ac46b492dd"
+                "reference": "f5e32834cab0f4a239ae0d7eb173fe90e70bd2d1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-filament/admin/zipball/adaa3273e7b9cc1875788cc692d1f8ac46b492dd",
-                "reference": "adaa3273e7b9cc1875788cc692d1f8ac46b492dd",
+                "url": "https://api.github.com/repos/laravel-filament/admin/zipball/f5e32834cab0f4a239ae0d7eb173fe90e70bd2d1",
+                "reference": "f5e32834cab0f4a239ae0d7eb173fe90e70bd2d1",
                 "shasum": ""
             },
             "require": {
@@ -1217,20 +1277,20 @@
                 "issues": "https://github.com/laravel-filament/filament/issues",
                 "source": "https://github.com/laravel-filament/filament"
             },
-            "time": "2022-05-15T21:32:36+00:00"
+            "time": "2022-05-18T19:34:40+00:00"
         },
         {
             "name": "filament/forms",
-            "version": "v2.12.10",
+            "version": "v2.12.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-filament/forms.git",
-                "reference": "480fe7fa1a89b0261224320054a9ed2f8e32fa51"
+                "reference": "9a3dcaa47fe64ab81bcf9c60b1d61a49e08507cf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-filament/forms/zipball/480fe7fa1a89b0261224320054a9ed2f8e32fa51",
-                "reference": "480fe7fa1a89b0261224320054a9ed2f8e32fa51",
+                "url": "https://api.github.com/repos/laravel-filament/forms/zipball/9a3dcaa47fe64ab81bcf9c60b1d61a49e08507cf",
+                "reference": "9a3dcaa47fe64ab81bcf9c60b1d61a49e08507cf",
                 "shasum": ""
             },
             "require": {
@@ -1274,11 +1334,11 @@
                 "issues": "https://github.com/laravel-filament/filament/issues",
                 "source": "https://github.com/laravel-filament/filament"
             },
-            "time": "2022-05-15T21:32:30+00:00"
+            "time": "2022-05-18T19:34:43+00:00"
         },
         {
             "name": "filament/spatie-laravel-media-library-plugin",
-            "version": "v2.12.10",
+            "version": "v2.12.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-filament/spatie-laravel-media-library-plugin.git",
@@ -1315,7 +1375,7 @@
         },
         {
             "name": "filament/spatie-laravel-settings-plugin",
-            "version": "v2.12.10",
+            "version": "v2.12.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-filament/spatie-laravel-settings-plugin.git",
@@ -1362,7 +1422,7 @@
         },
         {
             "name": "filament/spatie-laravel-tags-plugin",
-            "version": "v2.12.10",
+            "version": "v2.12.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-filament/spatie-laravel-tags-plugin.git",
@@ -1399,16 +1459,16 @@
         },
         {
             "name": "filament/support",
-            "version": "v2.12.10",
+            "version": "v2.12.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-filament/support.git",
-                "reference": "6d3c61ee431e43b8cdf4438a874ec8e065d04bc1"
+                "reference": "b953ab989d5b0bad919b996d1cd7cbea3c95c347"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-filament/support/zipball/6d3c61ee431e43b8cdf4438a874ec8e065d04bc1",
-                "reference": "6d3c61ee431e43b8cdf4438a874ec8e065d04bc1",
+                "url": "https://api.github.com/repos/laravel-filament/support/zipball/b953ab989d5b0bad919b996d1cd7cbea3c95c347",
+                "reference": "b953ab989d5b0bad919b996d1cd7cbea3c95c347",
                 "shasum": ""
             },
             "require": {
@@ -1444,20 +1504,20 @@
                 "issues": "https://github.com/laravel-filament/filament/issues",
                 "source": "https://github.com/laravel-filament/filament"
             },
-            "time": "2022-05-14T06:44:01+00:00"
+            "time": "2022-05-18T19:34:43+00:00"
         },
         {
             "name": "filament/tables",
-            "version": "v2.12.10",
+            "version": "v2.12.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-filament/tables.git",
-                "reference": "3f55721f71ecc494de18ceecff32bf084b456d4c"
+                "reference": "5fad0061c2dad6d22145daad0ee7dd97f08c4e16"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-filament/tables/zipball/3f55721f71ecc494de18ceecff32bf084b456d4c",
-                "reference": "3f55721f71ecc494de18ceecff32bf084b456d4c",
+                "url": "https://api.github.com/repos/laravel-filament/tables/zipball/5fad0061c2dad6d22145daad0ee7dd97f08c4e16",
+                "reference": "5fad0061c2dad6d22145daad0ee7dd97f08c4e16",
                 "shasum": ""
             },
             "require": {
@@ -1498,7 +1558,7 @@
                 "issues": "https://github.com/laravel-filament/filament/issues",
                 "source": "https://github.com/laravel-filament/filament"
             },
-            "time": "2022-05-15T21:32:27+00:00"
+            "time": "2022-05-18T19:34:37+00:00"
         },
         {
             "name": "fruitcake/php-cors",
@@ -1570,6 +1630,102 @@
                 }
             ],
             "time": "2022-02-20T15:07:15+00:00"
+        },
+        {
+            "name": "geo-io/interface",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/geo-io/interface.git",
+                "reference": "cf46fe7b013de20ab8b601238c7d91b480810644"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/geo-io/interface/zipball/cf46fe7b013de20ab8b601238c7d91b480810644",
+                "reference": "cf46fe7b013de20ab8b601238c7d91b480810644",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "GeoIO\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jan Sorgalla",
+                    "email": "jsorgalla@gmail.com"
+                }
+            ],
+            "description": "Geo I/O base interfaces.",
+            "keywords": [
+                "geo",
+                "geometry",
+                "io"
+            ],
+            "support": {
+                "issues": "https://github.com/geo-io/interface/issues",
+                "source": "https://github.com/geo-io/interface/tree/v1.0.1"
+            },
+            "time": "2016-07-28T07:17:02+00:00"
+        },
+        {
+            "name": "geo-io/wkb-parser",
+            "version": "v1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/geo-io/wkb-parser.git",
+                "reference": "d6c3101e6fa255c2a5064fedb33551c4d50e58f6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/geo-io/wkb-parser/zipball/d6c3101e6fa255c2a5064fedb33551c4d50e58f6",
+                "reference": "d6c3101e6fa255c2a5064fedb33551c4d50e58f6",
+                "shasum": ""
+            },
+            "require": {
+                "geo-io/interface": "~1.0",
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "mockery/mockery": "~0.9.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "GeoIO\\WKB\\Parser\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jan Sorgalla",
+                    "email": "jsorgalla@gmail.com"
+                }
+            ],
+            "description": "Well-known binary (WKB) Parser.",
+            "keywords": [
+                "geo",
+                "geometry",
+                "io",
+                "parser",
+                "wkb"
+            ],
+            "support": {
+                "issues": "https://github.com/geo-io/wkb-parser/issues",
+                "source": "https://github.com/geo-io/wkb-parser/tree/v1.0.2"
+            },
+            "time": "2022-01-15T16:29:24+00:00"
         },
         {
             "name": "graham-campbell/result-type",
@@ -2039,6 +2195,65 @@
                 }
             ],
             "time": "2021-12-16T16:49:26+00:00"
+        },
+        {
+            "name": "jmikola/geojson",
+            "version": "1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jmikola/geojson.git",
+                "reference": "8a0c5a88098bc70d05a4cb491ed77303ce9ff075"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jmikola/geojson/zipball/8a0c5a88098bc70d05a4cb491ed77303ce9ff075",
+                "reference": "8a0c5a88098bc70d05a4cb491ed77303ce9ff075",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "php": "^7.4 || ^8.0",
+                "symfony/polyfill-php80": "^1.25"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9.5",
+                "scrutinizer/ocular": "^1.8.1",
+                "slevomat/coding-standard": "^7.0",
+                "squizlabs/php_codesniffer": "^3.6"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GeoJson\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jeremy Mikola",
+                    "email": "jmikola@gmail.com"
+                }
+            ],
+            "description": "GeoJSON implementation for PHP",
+            "homepage": "https://github.com/jmikola/geojson",
+            "keywords": [
+                "geo",
+                "geojson",
+                "geospatial"
+            ],
+            "support": {
+                "issues": "https://github.com/jmikola/geojson/issues",
+                "source": "https://github.com/jmikola/geojson/tree/1.1.1"
+            },
+            "time": "2022-04-10T23:56:18+00:00"
         },
         {
             "name": "laravel/framework",
@@ -2963,29 +3178,31 @@
         },
         {
             "name": "maennchen/zipstream-php",
-            "version": "2.1.0",
+            "version": "2.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/maennchen/ZipStream-PHP.git",
-                "reference": "c4c5803cc1f93df3d2448478ef79394a5981cc58"
+                "reference": "211e9ba1530ea5260b45d90c9ea252f56ec52729"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/maennchen/ZipStream-PHP/zipball/c4c5803cc1f93df3d2448478ef79394a5981cc58",
-                "reference": "c4c5803cc1f93df3d2448478ef79394a5981cc58",
+                "url": "https://api.github.com/repos/maennchen/ZipStream-PHP/zipball/211e9ba1530ea5260b45d90c9ea252f56ec52729",
+                "reference": "211e9ba1530ea5260b45d90c9ea252f56ec52729",
                 "shasum": ""
             },
             "require": {
                 "myclabs/php-enum": "^1.5",
-                "php": ">= 7.1",
+                "php": "^7.4 || ^8.0",
                 "psr/http-message": "^1.0",
                 "symfony/polyfill-mbstring": "^1.0"
             },
             "require-dev": {
                 "ext-zip": "*",
-                "guzzlehttp/guzzle": ">= 6.3",
+                "guzzlehttp/guzzle": "^6.5.3 || ^7.2.0",
                 "mikey179/vfsstream": "^1.6",
-                "phpunit/phpunit": ">= 7.5"
+                "php-coveralls/php-coveralls": "^2.4",
+                "phpunit/phpunit": "^8.5.8 || ^9.4.2",
+                "vimeo/psalm": "^4.1"
             },
             "type": "library",
             "autoload": {
@@ -3022,7 +3239,7 @@
             ],
             "support": {
                 "issues": "https://github.com/maennchen/ZipStream-PHP/issues",
-                "source": "https://github.com/maennchen/ZipStream-PHP/tree/master"
+                "source": "https://github.com/maennchen/ZipStream-PHP/tree/2.2.1"
             },
             "funding": [
                 {
@@ -3030,7 +3247,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2020-05-30T13:11:16+00:00"
+            "time": "2022-05-18T15:52:06+00:00"
         },
         {
             "name": "markbaker/complex",
@@ -3242,6 +3459,70 @@
                 }
             ],
             "time": "2022-05-10T09:36:00+00:00"
+        },
+        {
+            "name": "mstaack/laravel-postgis",
+            "version": "5.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mstaack/laravel-postgis.git",
+                "reference": "a3c00e0bd2b6ee371a869f6c9079e33d9ca99f7c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mstaack/laravel-postgis/zipball/a3c00e0bd2b6ee371a869f6c9079e33d9ca99f7c",
+                "reference": "a3c00e0bd2b6ee371a869f6c9079e33d9ca99f7c",
+                "shasum": ""
+            },
+            "require": {
+                "bosnadev/database": "^0.21|master",
+                "geo-io/wkb-parser": "^1.0",
+                "illuminate/database": "^6.0|^7.0|^8.0|^9.0",
+                "jmikola/geojson": "^1.0",
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "illuminate/pagination": "^6.0|^7.0|^8.0|^9.0",
+                "mockery/mockery": "^1.3",
+                "phpunit/phpunit": "^8.5"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "MStaack\\LaravelPostgis\\DatabaseServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "MStaack\\LaravelPostgis\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Peter Haza",
+                    "email": "peter.haza@gmail.com"
+                },
+                {
+                    "name": "Nicholas Barrett",
+                    "email": "njbarrett7@gmail.com"
+                },
+                {
+                    "name": "Max Matteo Staack",
+                    "email": "maxmatteostaack@gmail.com"
+                }
+            ],
+            "description": "Postgis extensions for laravel. Aims to make it easy to work with geometries from laravel models",
+            "support": {
+                "issues": "https://github.com/mstaack/laravel-postgis/issues",
+                "source": "https://github.com/mstaack/laravel-postgis/tree/5.4"
+            },
+            "time": "2022-04-25T13:19:25+00:00"
         },
         {
             "name": "myclabs/php-enum",
@@ -5033,16 +5314,16 @@
         },
         {
             "name": "spatie/laravel-medialibrary",
-            "version": "10.3.4",
+            "version": "10.3.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-medialibrary.git",
-                "reference": "d3d09dc6b1eae36552d723128896be738733e056"
+                "reference": "ecfaa6dff3655fb881949dfb24ba798e9b621335"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-medialibrary/zipball/d3d09dc6b1eae36552d723128896be738733e056",
-                "reference": "d3d09dc6b1eae36552d723128896be738733e056",
+                "url": "https://api.github.com/repos/spatie/laravel-medialibrary/zipball/ecfaa6dff3655fb881949dfb24ba798e9b621335",
+                "reference": "ecfaa6dff3655fb881949dfb24ba798e9b621335",
                 "shasum": ""
             },
             "require": {
@@ -5125,7 +5406,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/laravel-medialibrary/issues",
-                "source": "https://github.com/spatie/laravel-medialibrary/tree/10.3.4"
+                "source": "https://github.com/spatie/laravel-medialibrary/tree/10.3.5"
             },
             "funding": [
                 {
@@ -5137,7 +5418,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-05-05T06:36:20+00:00"
+            "time": "2022-05-19T15:34:44+00:00"
         },
         {
             "name": "spatie/laravel-package-tools",
@@ -7640,13 +7921,14 @@
             "dist": {
                 "type": "path",
                 "url": "packages/filament-pro",
-                "reference": "c70f8b112a3d40dea6d90e5b53b86ad2bd80d0f4"
+                "reference": "3e77d349906c5832548ecb520d17daa2985a4a74"
             },
             "require": {
                 "filament/filament": "^2.12",
                 "filament/spatie-laravel-media-library-plugin": "^2.10",
                 "filament/spatie-laravel-settings-plugin": "^2.10",
                 "filament/spatie-laravel-tags-plugin": "^2.10",
+                "mstaack/laravel-postgis": "^5.4",
                 "owenvoke/blade-fontawesome": "^2.0",
                 "php": "^8.0",
                 "psr/simple-cache": "^1.0",
@@ -8293,16 +8575,16 @@
         },
         {
             "name": "laravel/sail",
-            "version": "v1.14.5",
+            "version": "v1.14.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/sail.git",
-                "reference": "1da083e30e6b0d646535c0afc2afeffdccb7181d"
+                "reference": "f00f3a8f83e71436d473cda7700ae7b4b68d26cc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/sail/zipball/1da083e30e6b0d646535c0afc2afeffdccb7181d",
-                "reference": "1da083e30e6b0d646535c0afc2afeffdccb7181d",
+                "url": "https://api.github.com/repos/laravel/sail/zipball/f00f3a8f83e71436d473cda7700ae7b4b68d26cc",
+                "reference": "f00f3a8f83e71436d473cda7700ae7b4b68d26cc",
                 "shasum": ""
             },
             "require": {
@@ -8349,7 +8631,7 @@
                 "issues": "https://github.com/laravel/sail/issues",
                 "source": "https://github.com/laravel/sail"
             },
-            "time": "2022-05-16T18:13:03+00:00"
+            "time": "2022-05-18T15:56:59+00:00"
         },
         {
             "name": "maximebf/debugbar",

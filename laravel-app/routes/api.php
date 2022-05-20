@@ -1,8 +1,8 @@
 <?php
-
-use App\Http\Controllers\API\DirectoryController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\API\DirectoryController;
+use App\Http\Controllers\API\ThuadatController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,3 +23,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::any('/dir/hc-tinh', [DirectoryController::class, 'hcTinh']);
 Route::any('/dir/hc-quan', [DirectoryController::class, 'hcQuan']);
 Route::any('/dir/hc-phuong', [DirectoryController::class, 'hcPhuong']);
+
+Route::post('/thuadat-by-info', [ThuadatController::class, 'getByInfo']);
+Route::post('/thuadat-by-location', [ThuadatController::class, 'getByLocation']);
+Route::post('/thuadat-by-coords', [ThuadatController::class, 'getByCoords']);
