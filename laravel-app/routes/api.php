@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\DirectoryController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +18,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+Route::any('/dir/hc-tinh', [DirectoryController::class, 'hcTinh']);
+Route::any('/dir/hc-quan', [DirectoryController::class, 'hcQuan']);
+Route::any('/dir/hc-phuong', [DirectoryController::class, 'hcPhuong']);
