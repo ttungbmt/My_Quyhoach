@@ -1,15 +1,26 @@
-import {Button, DialogContent, DialogTitle} from "@mui/material";
+import { Button, DialogContent, DialogTitle, LinearProgress } from '@mui/material'
+import { useQuery } from 'react-query'
+import axios from 'axios'
+import Box from '@mui/material/Box'
 
-function DocsLayout({heading, closeBtn}){
-    return (
-        <>
-            <DialogTitle><span className="text-primary uppercase font-bold text-2xl">{heading}</span> {closeBtn}</DialogTitle>
-            <DialogContent>
-                <iframe width={560} height={315} src="https://www.youtube.com/embed/X1EpJbGrcY4" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
-                <div className="flex justify-center mt-20"><Button variant="contained" color="primary">Tải về PDF hướng dẫn sử dụng</Button></div>
-            </DialogContent>
-        </>
-    )
+function DocsLayout({ heading, closeBtn }) {
+  const {
+    isLoading,
+    data
+  } = useQuery('docData', () => axios.get('/api/pages/huong-dan-su-dung').then(res => res.data))
+
+  return (
+    <>
+      <DialogTitle><span className='text-primary uppercase font-bold text-2xl'>{heading}</span> {closeBtn}</DialogTitle>
+      <DialogContent className="md:min-w-[600px]">
+        {isLoading && <LinearProgress />}
+        <Box dangerouslySetInnerHTML={{ __html: data?.content }} />
+        <div className='flex justify-center mt-20'>
+          <Button variant='contained' color='primary'>Tải về PDF hướng dẫn sử dụng</Button>
+        </div>
+      </DialogContent>
+    </>
+  )
 }
 
 DocsLayout.defaultProps = {

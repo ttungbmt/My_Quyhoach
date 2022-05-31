@@ -36,7 +36,9 @@ class FAQResource extends Resource
                             ->label(__('Post Title'))
                             ->required()
                             ->maxLength(255),
-                        TinyEditor::make('content')->label(__('Post Content'))->showMenuBar()->required(),
+                        TinyEditor::make('content')->label(__('Post Content'))->showMenuBar()
+//                            ->required()
+                        ,
                     ]),
                 ])->columnSpan(3),
                 Grid::make()->schema([
