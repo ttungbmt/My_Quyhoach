@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "baseUrl": "./",
+        "paths": {
+              "@fuse/*": ["./src/@fuse/*"],
+              "@history*": ["./src/@history"],
+              "@lodash": ["./src/@lodash"],
+              "@mock-api": ["./src/@mock-api"],
+              "@base/*": ["./src/@base/*"],
+              "@redux-form": ["./src/@redux-form"],
+              "@redux-leaflet/*": ["./src/@redux-leaflet/*"],
+              "@redux-mapbox": ["./src/@redux-mapbox"],
+              "app/store/*": ["./src/app/store/*"],
+              "app/services/*": ["./src/app/services/*"],
+              "app/shared-components/*": ["./src/app/shared-components/*"],
+              "app/configs/*": ["./src/app/configs/*"],
+              "app/theme-layouts/*": ["./src/app/theme-layouts/*"],
+              "app/AppContext": ["./src/app/AppContext"]
+        }
+      }
+}
