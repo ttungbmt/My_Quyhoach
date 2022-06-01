@@ -1,19 +1,33 @@
-import { createSelector, createSlice } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSelector, createSlice } from '@reduxjs/toolkit'
 import { getMap, setMap } from './useMapStore'
+
+export const getConfig = createAsyncThunk('leaflet/config/getConfig', async () => {
+  return []
+})
 
 const initialState = {
   className: 'w-full h-full !z-10',
+  loading: false,
   center: [16.81505795923194, 105.53466796875001],
   zoom: 6,
-  zoomControl: false
+  zoomControl: false,
+  attributionControl: true
 }
 
 const configSlice = createSlice({
   name: 'leaflet/config',
   initialState,
   reducers: {
+    setLoading: (state, { payload }) => {
+      state.loading = payload
+    },
+
     setCenter: (state, { payload }) => {
       state.center = payload
+    },
+
+    setBounds: (state, { payload }) => {
+      state.bounds = payload
     },
 
     setView: (state, { payload }) => {
@@ -30,14 +44,15 @@ const configSlice = createSlice({
   }
 })
 
-export const { onMoveEnd, reset } = configSlice.actions
+export const { setLoading, setBounds, onMoveEnd, reset } = configSlice.actions
 
-export const setCenter = (center) => (dispatch, getState, api) => {
-  getMap().panTo(center)
-  dispatch(configSlice.actions.setCenter(center))
-}
+export const setCenter = (center) => (dispatch) => getMap()?.panTo(center)
+
+export const fitBounds = (bounds) => (dispatch) => getMap()?.fitBounds(bounds)
 
 export const selectConfig = ({ leaflet }) => leaflet.config
+
+export const selectLoading = (state) => selectConfig(state).loading
 
 export const selectViewport = createSelector([selectConfig], (config) => _.pick(config, ['center', 'zoom']))
 

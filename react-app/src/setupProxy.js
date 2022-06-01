@@ -4,7 +4,7 @@ module.exports = function (app) {
     app.use(
         '/geoserver',
         createProxyMiddleware({
-            target: 'http://103.183.113.89:8600',
+            target: process.env.REACT_APP_GEOSERVER_URL,
             changeOrigin: true
         })
     );
@@ -12,7 +12,7 @@ module.exports = function (app) {
     app.use(
         '/npm',
         createProxyMiddleware({
-            target: 'http://quyhoach.local:84',
+            target: process.env.REACT_APP_URL,
             changeOrigin: true
         })
     );
@@ -20,7 +20,7 @@ module.exports = function (app) {
     app.use(
         '/images',
         createProxyMiddleware({
-            target: 'http://quyhoach.local:84',
+            target: process.env.REACT_APP_URL,
             changeOrigin: true
         })
     );
@@ -28,7 +28,15 @@ module.exports = function (app) {
     app.use(
         '/api',
         createProxyMiddleware({
-            target: 'http://quyhoach.local:84',
+            target: process.env.REACT_APP_URL,
+            changeOrigin: true
+        })
+    );
+
+    app.use(
+        '/locales',
+        createProxyMiddleware({
+            target: process.env.REACT_APP_URL,
             changeOrigin: true
         })
     );

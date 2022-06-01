@@ -2,6 +2,8 @@ import PropTypes from 'prop-types'
 import { Controller, useFormContext } from 'react-hook-form'
 import { TextField as TextFieldBase } from '@mui/material'
 import CloseAdornment from './CloseAdorment'
+import _ from '@lodash'
+import React from 'react'
 
 function TextField(props = {}){
   const {control} = useFormContext();
@@ -18,9 +20,11 @@ function TextField(props = {}){
       render={({ field, fieldState: { error } }) => {
         return (
           <TextFieldBase
-            InputProps={InputProps}
-            {...textFieldProps}
             {...field}
+            InputProps={InputProps}
+            fullWidth
+            error={!!error}
+            helperText={_.upperFirst(error?.message)}
             onBlur={e => {
               field.onBlur(e)
               textFieldProps.onBlur && textFieldProps.onBlur(e)
@@ -29,7 +33,8 @@ function TextField(props = {}){
               field.onChange(e)
               textFieldProps.onChange && textFieldProps.onChange(e)
             }}
-            error={!!error}
+            value={field.value ?? ''}
+            {...textFieldProps}
           />
         )
       }}

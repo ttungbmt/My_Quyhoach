@@ -16,8 +16,8 @@ function DrawerPage({className, heading, content, disablePadding = false}){
           backgroundColor: theme => theme.palette.background.paper,
         },
         '& .FusePageSimple-content': {
-          px: '14px',
-          pb: '14px',
+          px: '16px',
+          pb: '16px',
         }
       }}
       header={(

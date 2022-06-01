@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { changeLanguage, selectCurrentLanguage, selectLanguages } from 'app/store/i18nSlice';
 import clsx from 'clsx'
 import Tooltip from '@base/components/Tooltip'
+import ls from 'localstorage-slim'
 
 function LanguageSwitcher(props) {
   const currentLanguage = useSelector(selectCurrentLanguage);
@@ -25,9 +26,12 @@ function LanguageSwitcher(props) {
 
   function handleLanguageChange(lng) {
     dispatch(changeLanguage(lng.id));
+    ls.set('LANGUAGE_CODE', lng.id, {ttl: 24*60*60}) // ttl: 1 ngày
 
     langMenuClose();
   }
+
+  if(languages.length === 1) return null
 
   return (
     <>

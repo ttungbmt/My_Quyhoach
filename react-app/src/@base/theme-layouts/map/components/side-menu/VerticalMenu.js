@@ -76,6 +76,7 @@ const Root = styled('div')(({theme}) => ({
 function VerticalMenu({selectedId}){
   const dispatch = useDispatch()
   const mainThemeDark = useSelector(selectMainThemeDark)
+  const mainTheme = useSelector(selectMainTheme)
   const navigation = useSelector(selectNavigation);
 
   return (
@@ -114,7 +115,9 @@ function VerticalMenu({selectedId}){
             ))}
           </div>
           <div className="flex flex-col">
-            <LanguageSwitcher className="fuse-list-item"/>
+            <ThemeProvider theme={mainTheme}>
+              <LanguageSwitcher className="fuse-list-item"/>
+            </ThemeProvider>
           </div>
         </List>
       </Root>

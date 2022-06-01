@@ -7,6 +7,7 @@ import useFormStore from "@redux-form/useFormStore";
 import {useDebounce, useUpdateEffect} from "react-use";
 import useThuadatStore from "./useThuadatStore";
 import _ from "lodash";
+import Alert from '@mui/material/Alert'
 
 
 const formName = 'diachiForm'
@@ -47,9 +48,12 @@ function DiachiTab(){
                         ),
                     }}/>
 
+
                     <FormStateToStore form={formName}/>
                 </form>
             </FormProvider>
+
+            {_.isEmpty(autoSuggestData) && <Alert severity="info" className="mx-12 text-sm flex items-center">Bạn vui lòng nhập từ khóa (địa chỉ, vị trí, tọa độ) để tra cứu thửa đất</Alert>}
 
             {!_.isEmpty(autoSuggestData) && (
                 <div className="border-t border-b">

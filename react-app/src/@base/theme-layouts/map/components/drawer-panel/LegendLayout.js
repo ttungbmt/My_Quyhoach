@@ -5,23 +5,25 @@ import { useQuery } from 'react-query'
 import axios from 'axios'
 import { LinearProgress, Stack } from '@mui/material'
 import Box from '@mui/material/Box'
+import { useTranslation } from 'react-i18next'
 
 const Root = styled(DrawerPage)(({ theme, ...props }) => ({
 
 }));
 
 function LegendLayout({heading}){
+  const {t} = useTranslation()
   const { isLoading, data } = useQuery('introData', () => axios.get('/api/legend').then(res => res.data))
 
   return (
     <Root
-      heading={heading}
+      heading={t(heading)}
       content={(
         <div className="w-full">
           {isLoading && <LinearProgress />}
           {data?.description && (<div className="mb-12 text-gray-500">{data?.description}</div>)}
           <Stack spacing={1}>
-            {data?.items.map((i, k) => (
+            {data?.items?.map((i, k) => (
               <div className="flex" key={k}>
                 <Box sx={{width: 20, height: 20, backgroundColor: i.fill_color}} className="mr-12 shrink-0"></Box>
                 <Box>{i.text}</Box>

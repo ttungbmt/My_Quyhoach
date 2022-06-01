@@ -27,6 +27,7 @@ const StyledAccordion = styled(Accordion)(({ theme }) => ({
 function FAQLayout({heading, closeBtn}){
     const { isLoading, data } = useQuery('faqData', () => axios.get('/api/faqs').then(res => res.data))
 
+
     return (
         <>
             <DialogTitle sx={{pr: 6}}>
@@ -34,7 +35,7 @@ function FAQLayout({heading, closeBtn}){
             </DialogTitle>
             <DialogContent className="md:min-w-[600px]" sx={{backgroundColor: 'background.default', pt: '16px!important'}}>
                 {isLoading && <LinearProgress/>}
-                {data?.map(({title, content}, k) => (
+                {_.isArray(data) && data?.map(({title, content}, k) => (
                     <StyledAccordion key={k}>
                         <AccordionSummary>
                             <div className="flex py-4">
@@ -52,7 +53,7 @@ function FAQLayout({heading, closeBtn}){
 }
 
 FAQLayout.defaultProps = {
-    heading: 'Các câu hỏi thường gặp'
+    heading: 'Câu hỏi thường gặp'
 }
 
 

@@ -1,5 +1,5 @@
 import {FormProvider, useFieldArray, useForm, Controller} from "react-hook-form";
-import {FormStateToStore, InputField} from "@redux-form";
+import { AutocompleteField, FormStateToStore, InputField } from '@redux-form'
 import {Box, Button, IconButton, Menu, MenuItem} from "@mui/material";
 import Alert from '@mui/material/Alert';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
@@ -65,9 +65,11 @@ function ToadoTab(){
         <div className="m-12">
             <FormProvider {...methods}>
                 <form onSubmit={handleSubmit(getThuadatByCoords)}>
-                    <Alert severity="warning" className="text-sm flex items-center">Sử dụng hệ tọa độ Quốc gia VN2000 để tìm kiếm</Alert>
+                    <Alert severity="warning" className="text-sm flex items-center mb-20">Sử dụng hệ tọa độ Quốc gia VN2000 để tìm kiếm</Alert>
 
-                    <table className="mt-24 mx-12">
+                    <AutocompleteField name="ma_tp" label="Tỉnh/ TP" url="/api/dir/hc-tinh"/>
+
+                    <table className="mt-12 mx-12">
                         <thead>
                         <tr>
                             <th className="font-medium pr-12">#</th>

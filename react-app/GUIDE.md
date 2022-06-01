@@ -19,7 +19,7 @@ react-query
 @googlemaps/polyline-codec
 customize-cra
 mongoose
-
+localstorage-slim
 
 https://github.com/ProminentEdge/leaflet-measure-path
 

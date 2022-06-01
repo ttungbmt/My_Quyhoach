@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\API\FAQController;
+use App\Http\Controllers\API\FeedbackController;
 use App\Http\Controllers\API\LegendController;
+use App\Http\Controllers\API\MapController;
 use App\Http\Controllers\API\PageController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -32,6 +34,8 @@ Route::post('/thuadat-by-info', [ThuadatController::class, 'getByInfo']);
 Route::post('/thuadat-by-location', [ThuadatController::class, 'getByLocation']);
 Route::post('/thuadat-by-coords', [ThuadatController::class, 'getByCoords']);
 
+Route::get('/maps/builder', [MapController::class, 'builder']);
 Route::get('/pages/{slug}', [PageController::class, 'view']);
 Route::get('/faqs', [FAQController::class, 'index']);
+Route::resource('feedbacks', FeedbackController::class);
 Route::get('/legend', [LegendController::class, 'index']);

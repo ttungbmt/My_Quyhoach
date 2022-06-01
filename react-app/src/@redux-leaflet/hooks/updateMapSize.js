@@ -8,7 +8,7 @@ function updateMapSize(){
   const DOMRect = useResizeObserver(mapRef);
 
   useUpdateEffect(() => {
-    getMap().invalidateSize()
+    getMap()?.invalidateSize()
   }, [DOMRect])
 
   return [mapRef, DOMRect]

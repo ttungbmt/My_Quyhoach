@@ -1,9 +1,10 @@
 import create from "zustand-store-addons";
 import {providers} from "./providers";
 import {models} from "./models";
+import { env } from '@base/utils'
 
 const useSearchProviderStore = create((set, get) => ({
-  provider: 'osm',
+  provider: env('MAP_SEARCH_PROVIDER', 'meeymap'),
 
   searchProvider: function (params){
     return new providers[this.provider](params)

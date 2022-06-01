@@ -8,6 +8,7 @@ import { selectBasemaps, setBasemapId } from '@redux-leaflet/store/layersSlice'
 import { selectViewport } from '@redux-leaflet/store/configSlice'
 import { useDeepCompareEffect } from 'react-use'
 import MySvgIcon from '@base/components/MySvgIcon'
+import { useTranslation } from 'react-i18next'
 
 const Root = styled(DrawerPage)(({ theme, ...props }) => ({
   '& .FusePageSimple-contentWrapper': {
@@ -37,6 +38,7 @@ function ViewportChanged({center, zoom}){
 }
 
 function BasemapLayout({ heading }) {
+  const {t} = useTranslation()
   const dispatch = useDispatch()
   const viewport = useSelector(selectViewport)
   const baselayers = useSelector(selectBasemaps)
@@ -53,7 +55,7 @@ function BasemapLayout({ heading }) {
 
   return (
     <Root
-      heading={heading}
+      heading={t(heading)}
       content={(
         <Stack spacing={2} className="w-full">
           {baselayers.map((l, k) => (

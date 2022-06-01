@@ -3,5 +3,8 @@
     "User": "Người dùng",
     "Username": "Tên đăng nhập",
     "Password": "Mật khẩu",
-    "Directory": "Danh mục"
+    "Directory": "Danh mục",
+    "Fullname": "Họ tên",
+    "Content": "Nội dung",
+    "Rating": "Đánh giá"
 }

@@ -40,6 +40,7 @@ function ToolbarLayout(props) {
     {name: 'account', layout: ({ name }) => <UserMenu name={name}/>},
   ], [])
 
+
   return (
     <ThemeProvider theme={toolbarTheme}>
       <Root>

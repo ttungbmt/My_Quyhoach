@@ -8,7 +8,9 @@ const DEFAULT_USE_TITLE_OPTIONS = {
 function useTitle(title, options= DEFAULT_USE_TITLE_OPTIONS) {
   const prevTitleRef = useRef(document.title);
 
-  if (document.title !== title) document.title = `${title} - ${env('NAME')}`;
+  useEffect(() => {
+    if (document.title !== title) document.title = `${title} - ${env('NAME')}`;
+  }, [title])
 
   useEffect(() => {
     if (options && options.restoreOnUnmount) {

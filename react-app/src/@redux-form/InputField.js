@@ -4,7 +4,7 @@ import _ from 'lodash'
 import {TextField} from "@mui/material";
 
 function InputField({name, type = 'text', label, defaultValue = '', ...props}) {
-    const {control, setValue} = useFormContext();
+    const {control} = useFormContext();
 
 
     return (

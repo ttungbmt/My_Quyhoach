@@ -48,7 +48,6 @@ function Routes() {
       <Divider />
       <List disablePadding>
         {mainRoute.legs.map((leg, kl) => {
-
           return leg.steps.map((step, ks) => (
             <ListItem button key={`${kl}-${ks}`} onClick={() => onPanto(step)}>
               <ListItemIcon sx={{ minWidth: 36 }}>

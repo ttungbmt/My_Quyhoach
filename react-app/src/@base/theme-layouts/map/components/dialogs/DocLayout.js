@@ -24,7 +24,10 @@ function DocsLayout({ heading, closeBtn }) {
 }
 
 DocsLayout.defaultProps = {
-  heading: 'Hướng dẫn sử dụng'
+  heading: 'Hướng dẫn sử dụng',
+  dialogProps: {
+    classes: { paper: 'max-w-[600px]' }
+  }
 }
 
 export default DocsLayout

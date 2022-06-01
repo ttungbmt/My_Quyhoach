@@ -18,7 +18,10 @@ import { AuthProvider } from './auth/AuthContext';
 import { useEffect } from 'react'
 import { addDataSidePanel } from '@base/theme-layouts/shared-components/sidePanel/store/dataSlice'
 import { addLayers, setBasemapId } from '@redux-leaflet/store/layersSlice'
-import { QueryClient, QueryClientProvider } from 'react-query'
+import { QueryClient, QueryClientProvider, useQuery } from 'react-query'
+import { useAsync } from 'react-use'
+import axios from 'axios'
+import useAppConfig from './useAppConfig'
 
 // import axios from 'axios';
 /**
@@ -50,34 +53,11 @@ const queryClient = new QueryClient({
 })
 
 const App = () => {
-  const dispatch = useDispatch()
   const user = useSelector(selectUser);
   const langDirection = useSelector(selectCurrentLanguageDirection);
   const mainTheme = useSelector(selectMainTheme);
 
-  useEffect(() => {
-    dispatch(addDataSidePanel({
-      menu: [
-        {name: 'intro', title: 'Giới thiệu phần mềm', iconClass: 'fa-solid fa-browser'},
-        {name: 'doc', title: 'Hướng dẫn sử dụng', iconClass: 'fa-solid fa-book-sparkles'},
-        {name: 'faq', title: 'Các câu hỏi thường gặp', iconClass: 'fa-solid fa-cloud-question'},
-        {name: 'feedback', title: 'Đánh giá & Góp ý', iconClass: 'fa-solid fa-message-lines'},
-      ]
-    }))
-
-    // dispatch(setBasemapId('osm'))
-
-    dispatch(addLayers([
-      {baselayer: true, name: 'becamaps', title: 'BecaMaps', url: 'http://becamaps.vntts.vn:82/geoserver/gwc/service/wmts?layer=osm:osm_vietnam&style=&tilematrixset=EPSG:900913&Service=WMTS&Request=GetTile&Version=1.0.0&Format=image/png&TileMatrix=EPSG:900913:{z}&TileCol={x}&TileRow={y}'},
-      {baselayer: true, name: 'mapbox', title: 'Mapbox Street', url: 'https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibWljaGFlbGRvcm1hbiIsImEiOiJjaXZwY2U0Z2IwMDF0MnRwOHF5MHYzeHM0In0.UdcEo0k-jS29ebI_fhIpMw'},
-      {baselayer: true, name: 'osm', title: 'OSM', url: 'http://tile.openstreetmap.org/{z}/{x}/{y}.png'},
-      {baselayer: true, name: 'vietbando', title: 'Vietbando', url: 'http://images.vietbando.com/ImageLoader/GetImage.ashx?Ver=2016&LayerIds=VBD&Y={y}&X={x}&Level={z}'},
-      {baselayer: true, name: 'google-maps', title: 'Google Maps', url: 'http://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}'},
-      {baselayer: true, name: 'google-satellite', title: 'Google Satellite', url: 'http://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}'},
-      {baselayer: true, name: 'google-satellite-hybrid', title: 'Google Satellite Hybrid', url: 'http://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}'},
-    ]))
-
-  }, [dispatch])
+  useAppConfig()
 
   return (
     <CacheProvider value={createCache(emotionCacheOptions[langDirection])}>

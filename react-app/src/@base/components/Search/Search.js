@@ -12,6 +12,7 @@ import { useDebouncedEffect } from '@base/hooks'
 import { selectLoading, selectQuery, selectSuggestionModels, setQuery } from './store/suggestionsSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import { getPlace, setPlace } from './store/placeSlice'
+import { useTranslation } from 'react-i18next'
 
 const Root = styled(SidePage)(({ theme }) => ({
   '& .FusePageSimple-content': {
@@ -22,6 +23,7 @@ const Root = styled(SidePage)(({ theme }) => ({
 
 function Search() {
   const dispatch = useDispatch()
+  const {t} = useTranslation()
   const loading = useSelector(selectLoading)
   const query = useSelector(selectQuery)
   const [value, setValue] = useState(query)
@@ -41,7 +43,7 @@ function Search() {
 
   return (
     <Root
-      title='Tìm kiếm vị trí'
+      title={t('Tìm kiếm vị trí')}
       content={(
         <div>
           <div className='px-12 pt-12'>

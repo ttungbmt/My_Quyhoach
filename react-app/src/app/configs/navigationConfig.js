@@ -3,20 +3,13 @@ import ar from './navigation-i18n/ar';
 import en from './navigation-i18n/en';
 import tr from './navigation-i18n/tr';
 import { toggleSidePanel } from '@base/theme-layouts/shared-components/sidePanel/store/stateSlice'
+import { env } from '@base/utils'
 
-i18next.addResourceBundle('en', 'navigation', en);
-i18next.addResourceBundle('tr', 'navigation', tr);
-i18next.addResourceBundle('ar', 'navigation', ar);
+// i18next.addResourceBundle('en', 'navigation', en);
+// i18next.addResourceBundle('tr', 'navigation', tr);
+// i18next.addResourceBundle('ar', 'navigation', ar);
 
-const navigationConfig = [
-  // {
-  //   id: 'example-component',
-  //   title: 'Example',
-  //   translate: 'EXAMPLE',
-  //   type: 'item',
-  //   icon: 'heroicons-outline:star',
-  //   url: 'example',
-  // },
+const items = [
   {
     id: 'menu',
     title: 'Menu',
@@ -69,6 +62,10 @@ const navigationConfig = [
     iconClass: 'fa-light fa-sitemap overflow-visible',
     url: '/maps/ranh-gioi-hc',
   },
-];
+]
+
+const navigationConfig = env('MENUS', _.map(items, 'id').join(',')).split(',').map(id => {
+  return _.find(items, {id});
+});
 
 export default navigationConfig;

@@ -1,4 +1,4 @@
-import { CircularProgress, DialogContent, DialogTitle, LinearProgress } from '@mui/material'
+import { DialogContent, DialogTitle, LinearProgress } from '@mui/material'
 import { useQuery } from 'react-query'
 import axios from 'axios'
 import Box from '@mui/material/Box'
@@ -23,7 +23,7 @@ function IntroLayout({heading, closeBtn}){
 }
 
 IntroLayout.defaultProps = {
-  heading: 'Giới thiệu phần mềm'
+  heading: 'Giới thiệu'
 }
 
 export default IntroLayout
