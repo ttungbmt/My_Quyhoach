@@ -13,8 +13,16 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('{path?}', SinglePageController::class)->where('path', '[a-zA-Z0-9-/]+');
+
+Route::get('/maps/{path?}', SinglePageController::class)->where('path', '[a-zA-Z0-9-/]+');
 
 Route::get('/', function () {
+    return redirect('/maps/tim-kiem-thua-dat');
+});
+
+Route::get('/test', function () {
+    zz;
     return view('welcome');
 });
+
+
