@@ -20,9 +20,4 @@ Route::get('/', function () {
     return redirect('/maps/tim-kiem-thua-dat');
 });
 
-Route::get('/test', function () {
-    zz;
-    return view('welcome');
-});
-
 
