@@ -4,16 +4,32 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Models\Thuadat;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ThuadatController extends Controller
 {
     public function view($id){
         $model = Thuadat::findOrFail($id);
 
+
+
         return $this->formatThuadat($model);
     }
 
     protected function formatThuadat($model){
+        $quyhoachs = DB::select(<<<SQL
+            SELECT masdd ma_sdd, ld.ten ten_sdd, SUM(ST_Area(its_geom::geography)) dientich
+            FROM (
+                    SELECT masdd, ST_Intersection(geom, (SELECT geom FROM thuadat WHERE id = {$model->id})) its_geom
+                    FROM quyhoach
+                    WHERE ST_Intersects(geom, (SELECT geom FROM thuadat WHERE id = {$model->id}))
+            ) as qh
+            LEFT JOIN loaidat ld ON ld.ma = qh.masdd
+            GROUP BY masdd, ld.ten
+            HAVING SUM(ST_Area(its_geom::geography)) > 1
+            ORDER BY SUM(ST_Area(its_geom::geography))
+        SQL);
+
         return [
             'id' => $model->id,
             'tinh_tp' => 'Lâm Đồng',
@@ -22,7 +38,8 @@ class ThuadatController extends Controller
             'sothua' => $model->shthua,
             'soto' => $model->shbando,
             'dientich' => $model->dientich,
-            'geometry' => $model->geom
+            'geometry' => $model->geom,
+            'quyhoachs' => $quyhoachs
         ];
     }
 

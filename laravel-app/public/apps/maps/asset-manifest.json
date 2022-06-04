@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/apps/maps/static/css/main.22552bf4.css",
-    "main.js": "/apps/maps/static/js/main.b71a8ef8.js",
+    "main.js": "/apps/maps/static/js/main.94917158.js",
     "static/js/646.c4a5f9ee.chunk.js": "/apps/maps/static/js/646.c4a5f9ee.chunk.js",
     "static/js/522.785d0c99.chunk.js": "/apps/maps/static/js/522.785d0c99.chunk.js",
     "static/js/818.48f0434f.chunk.js": "/apps/maps/static/js/818.48f0434f.chunk.js",
     "static/js/233.5ee56107.chunk.js": "/apps/maps/static/js/233.5ee56107.chunk.js",
     "static/js/390.eadd0aa6.chunk.js": "/apps/maps/static/js/390.eadd0aa6.chunk.js",
-    "static/js/408.25691146.chunk.js": "/apps/maps/static/js/408.25691146.chunk.js",
+    "static/js/408.aa7c7104.chunk.js": "/apps/maps/static/js/408.aa7c7104.chunk.js",
     "static/js/945.e161db35.chunk.js": "/apps/maps/static/js/945.e161db35.chunk.js",
     "static/media/markers_default@2x.png": "/apps/maps/static/media/markers_default@2x.9593b3c72f31a3f4b403.png",
     "static/media/markers_default.png": "/apps/maps/static/media/markers_default.c832adf43b69321540d3.png",
@@ -16,6 +16,6 @@
   },
   "entrypoints": [
     "static/css/main.22552bf4.css",
-    "static/js/main.b71a8ef8.js"
+    "static/js/main.94917158.js"
   ]
 }
