@@ -10,24 +10,21 @@ class ThuadatController extends Controller
 {
     public function view($id){
         $model = Thuadat::findOrFail($id);
-
-
-
         return $this->formatThuadat($model);
     }
 
     protected function formatThuadat($model){
         $quyhoachs = DB::select(<<<SQL
-            SELECT masdd ma_sdd, ld.ten ten_sdd, SUM(ST_Area(its_geom::geography)) dientich
+            SELECT masdd ma_sdd, ld.ten ten_sdd, ld.fill_color, SUM(ST_Area(its_geom::geography)) dientich
             FROM (
                     SELECT masdd, ST_Intersection(geom, (SELECT geom FROM thuadat WHERE id = {$model->id})) its_geom
                     FROM quyhoach
                     WHERE ST_Intersects(geom, (SELECT geom FROM thuadat WHERE id = {$model->id}))
             ) as qh
             LEFT JOIN loaidat ld ON ld.ma = qh.masdd
-            GROUP BY masdd, ld.ten
+            GROUP BY masdd, ld.ten, ld.fill_color
             HAVING SUM(ST_Area(its_geom::geography)) > 1
-            ORDER BY SUM(ST_Area(its_geom::geography))
+            ORDER BY SUM(ST_Area(its_geom::geography)) DESC
         SQL);
 
         return [
@@ -48,12 +45,13 @@ class ThuadatController extends Controller
             ->where('shthua', $request->input('sothua'))
             ->first();
 
-        return $this->formatThuadat($model);
+        if($model) return $this->formatThuadat($model);
+        return null;
     }
 
     public function getByLocation(Request $request){
         $location = $request->input('location');
-        $model = Thuadat::whereRaw("ST_Intersects('SRID=4326;POINT({$location['lat']} {$location['lng']})', geom)")->get();
+        $model = Thuadat::whereRaw("ST_Intersects('SRID=4326;POINT({$location['lng']} {$location['lat']})', geom)")->first();
         if($model) return $this->formatThuadat($model);
         return null;
     }
