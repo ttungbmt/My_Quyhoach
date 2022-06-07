@@ -6,10 +6,12 @@
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
+        "cyrildewit/eloquent-viewable": "^6.1",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^9.11",
         "laravel/sanctum": "^2.14.1",
         "laravel/tinker": "^2.7",
+        "multicaret/laravel-acquaintances": "@dev",
         "ttungbmt/filament-pro": "@dev"
     },
     "require-dev": {

@@ -5,6 +5,7 @@ use App\Http\Controllers\API\FeedbackController;
 use App\Http\Controllers\API\LegendController;
 use App\Http\Controllers\API\MapController;
 use App\Http\Controllers\API\PageController;
+use Filament\Http\Middleware\Authenticate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\DirectoryController;
@@ -30,7 +31,12 @@ Route::any('/dir/hc-tinh', [DirectoryController::class, 'hcTinh']);
 Route::any('/dir/hc-quan', [DirectoryController::class, 'hcQuan']);
 Route::any('/dir/hc-phuong', [DirectoryController::class, 'hcPhuong']);
 
-Route::get('/thuadats/view/{id}', [ThuadatController::class, 'view']);
+Route::middleware(['web'])->group(function () {
+    Route::get('/thuadats/view/{id}', [ThuadatController::class, 'view']);
+    Route::get('/thuadats/toggle-favorite/{id}', [ThuadatController::class, 'toggleFavorite']);
+    Route::get('/thuadats/increase-view-count/{id}', [ThuadatController::class, 'increaseViewCount']);
+});
+
 Route::post('/thuadat-by-info', [ThuadatController::class, 'getByInfo']);
 Route::post('/thuadat-by-location', [ThuadatController::class, 'getByLocation']);
 Route::post('/thuadat-by-coords', [ThuadatController::class, 'getByCoords']);
@@ -40,3 +46,7 @@ Route::get('/pages/{slug}', [PageController::class, 'view']);
 Route::get('/faqs', [FAQController::class, 'index']);
 Route::resource('feedbacks', FeedbackController::class);
 Route::get('/legend', [LegendController::class, 'index']);
+
+Route::get('/ip', function (){
+    return $_SERVER['REMOTE_ADDR'];
+});
