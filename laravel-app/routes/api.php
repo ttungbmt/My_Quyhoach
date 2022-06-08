@@ -30,6 +30,7 @@ Route::any('/dir/hc-tinh', [DirectoryController::class, 'hcTinh']);
 Route::any('/dir/hc-quan', [DirectoryController::class, 'hcQuan']);
 Route::any('/dir/hc-phuong', [DirectoryController::class, 'hcPhuong']);
 
+Route::get('/thuadats/view/{id}', [ThuadatController::class, 'view']);
 Route::post('/thuadat-by-info', [ThuadatController::class, 'getByInfo']);
 Route::post('/thuadat-by-location', [ThuadatController::class, 'getByLocation']);
 Route::post('/thuadat-by-coords', [ThuadatController::class, 'getByCoords']);

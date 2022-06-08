@@ -33,7 +33,11 @@ const layersSlice = createSlice({
     },
 
     addLayers(state, { payload }) {
-      layersAdapter.addMany(state, _.map(payload, values => ({id: nanoid(), ...values})))
+      layersAdapter.addMany(state, _.map(payload, values => ({
+        id: nanoid(),
+        ...values,
+        popup: parsePopup(values.popup)
+      })))
     },
 
     addBaseLayers(state, { payload }){
@@ -70,13 +74,19 @@ export const selectBasemaps = createSelector([selectBasemapId, selectLayers], (b
 })
 
 export const selectOverlays = createSelector([selectLayers], (layers) => {
-  return _.filter(layers, l => !l.baselayer).map(l => {
+  return _.filter(layers, l => !l.baselayer)
+})
+
+export const selectOverlaysSelected = createSelector([selectOverlays], (layers) => {
+  return _.filter(layers, {selected: true}).map(l => {
     return {
       component: (props) => {
         if(props.type === 'wmts') {
           if(props.layers) return <TileLayer {...props} url={`/geoserver/gwc/service/wmts?layer=${props.layers}&style=&tilematrixset=EPSG:900913&Service=WMTS&Request=GetTile&Version=1.0.0&Format=image/png&TileMatrix=EPSG:900913:{z}&TileCol={x}&TileRow={y}`} format="image/png"/>
           return <TileLayer {...props}/>
         }
+
+        if(props.type === 'xyz') return <TileLayer {...props}/>
 
         if(props.type === 'wms') return <WMSTileLayer transparent={true} format="image/png" {...props}/>
 
@@ -85,6 +95,19 @@ export const selectOverlays = createSelector([selectLayers], (layers) => {
       ...l
     }
   })
+})
+
+const parsePopup = (pop) => {
+  if(_.isBoolean(pop)) return {enabled: pop}
+
+  return {
+    enabled: true,
+    ...pop
+  }
+}
+
+export const selectOverlaysPopups = createSelector([selectOverlays], (layers) => {
+  return _.orderBy(_.filter(layers.map(l => ({zIndex: 0, ...l})), l => l.selected == true && l.popup.enabled), ['zIndex'], ['desc'])
 })
 
 export default layersSlice.reducer

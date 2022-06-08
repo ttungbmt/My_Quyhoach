@@ -13,6 +13,7 @@ function TextField(props = {}){
 
   if(type === 'search') InputProps.endAdornment = <CloseAdornment name={name} onClear={onClear}/>
 
+
   return (
     <Controller
       name={name}
@@ -21,6 +22,7 @@ function TextField(props = {}){
         return (
           <TextFieldBase
             {...field}
+            type={type}
             InputProps={InputProps}
             fullWidth
             error={!!error}

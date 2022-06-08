@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/maps/{path?}', SinglePageController::class)->where('path', '[a-zA-Z0-9-/]+');
 
 Route::get('/', function () {
-    return redirect('/maps/tim-kiem-thua-dat');
+    return redirect('/maps');
 });
 
 

@@ -20,6 +20,7 @@ react-query
 customize-cra
 mongoose
 localstorage-slim
+geo-valley
 
 https://github.com/ProminentEdge/leaflet-measure-path
 

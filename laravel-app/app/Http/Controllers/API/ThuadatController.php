@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class ThuadatController extends Controller
 {
+    public function view(Request $request, $id){
+        return Thuadat::findOrFail($id);
+    }
+
     public function getByInfo(Request $request){
         $model = Thuadat::where('shbando', $request->input('soto'))
             ->where('shthua', $request->input('sothua'))

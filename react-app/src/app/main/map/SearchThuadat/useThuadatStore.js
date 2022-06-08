@@ -3,7 +3,7 @@ import {providers} from "@base/components/Search";
 import mapService from 'app/services/mapService';
 
 const useThuadatStore = create((set, get) => ({
-    tabIndex: 0,
+    tabIndex: 1,
     setTabIndex: (index) => set({ tabIndex: index }),
 
     provider: 'meeymap',
@@ -51,23 +51,21 @@ const useThuadatStore = create((set, get) => ({
 
         const result = await searchProvider.place({ place_id });
         const thuadat = await mapService.getThuadatByLocation({ location: result.geometry.location });
-        console.log(thuadat)
     },
 
 
     getThuadatByInfo: async (values) => {
-        set({loading: true})
+        console.log(values)
+        // set({loading: true})
 
-        const {data} = await mapService.getThuadatByInfo(values);
-        console.log(data)
-        set({loading: false})
+        // const {data} = await mapService.getThuadatByInfo(values);
+        // set({loading: false})
     },
 
     getThuadatByCoords: async (values) => {
         set({loading: true})
 
         const {data} = await mapService.getThuadatByCoords(values);
-        console.log(data)
         set({loading: false})
     },
 }), {

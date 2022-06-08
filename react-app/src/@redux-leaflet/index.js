@@ -6,5 +6,6 @@ import './style.scss'
 export {default as MapEvents} from './MapEvents'
 export {default as updateMapSize} from './hooks/updateMapSize'
 export {default as OnChangeBounds} from './components/OnChangeBounds'
+export {default as WMSPopup} from './components/WMSPopup'
 
 export {default as reducer, useMapStore, getMap} from './store'

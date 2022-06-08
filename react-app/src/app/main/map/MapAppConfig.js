@@ -1,4 +1,7 @@
 import {lazy} from "react";
+import {
+  Navigate
+} from "react-router-dom";
 
 const Layers = lazy(() => import('./Layers/Layers'));
 const Search = lazy(() => import('@base/components/Search/Search'));
@@ -15,6 +18,10 @@ const MapsAppConfig = {
     },
   },
   routes: [
+    {
+      path: 'maps',
+      element: <Navigate to={'/maps/tim-kiem-thua-dat'}/>,
+    },
     {
       path: 'maps/layers',
       element: <Layers />,

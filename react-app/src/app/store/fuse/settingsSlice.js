@@ -12,6 +12,9 @@ import settingsConfig from 'app/configs/settingsConfig';
 import themeLayoutConfigs from 'app/theme-layouts/themeLayoutConfigs';
 import { setUser, updateUserSettings } from 'app/store/userSlice';
 import { darkPaletteText, lightPaletteText } from 'app/configs/themesConfig';
+import { viVN, enUS } from '@mui/material/locale';
+
+const locales = {vi: viVN, en: enUS} // @ttungbmt
 
 export const changeFuseTheme = (theme) => (dispatch, getState) => {
   const { fuse } = getState();
@@ -126,7 +129,7 @@ function generateMuiTheme(theme, direction) {
       mixins: extendThemeWithMixins(data),
       direction,
     })
-  );
+  , _.get(locales, process.env.REACT_APP_LANGUAGE_CODE, locales.en)); // @ttungbmt
   return response;
 }
 

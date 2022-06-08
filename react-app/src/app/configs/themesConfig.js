@@ -13,6 +13,85 @@ export const darkPaletteText = {
   disabled: 'rgb(156, 163, 175)',
 };
 
+const customTheme = {
+  typography: {
+    fontFamily: ['Poppins', 'Inter var', 'Roboto', '"Helvetica"', 'Arial', 'sans-serif'].join(','),
+  },
+  components: {
+    MuiButtonBase: {
+      defaultProps: {
+        disableRipple: false,
+      },
+    },
+    MuiTextField: {
+      defaultProps: {
+        color: 'primary',
+      },
+    },
+    MuiInputLabel: {
+      defaultProps: {
+        color: 'primary',
+      },
+    },
+    MuiSelect: {
+      defaultProps: {
+        color: 'primary',
+      },
+    },
+    MuiOutlinedInput: {
+      defaultProps: {
+        color: 'primary',
+      },
+    },
+    MuiSlider: {
+      defaultProps: {
+        color: 'secondary',
+      },
+    },
+    MuiCheckbox: {
+      defaultProps: {
+        color: 'secondary',
+      },
+    },
+    MuiRadio: {
+      defaultProps: {
+        color: 'secondary',
+      },
+    },
+    MuiSwitch: {
+      defaultProps: {
+        color: 'secondary',
+      },
+    },
+    // // MuiOutlinedInput: {
+    // //   styleOverrides: {
+    // //     root: {
+    // //       '&:hover fieldset': {
+    // //         borderColor: 'rgb(140 140 141)',
+    // //       },
+    // //     },
+    // //   },
+    // // },
+    // MuiInputBase: {
+    //   styleOverrides: {
+    //     root: {
+    //       minHeight: 40,
+    //       lineHeight: 1,
+    //       borderRadius: '8px!important',
+    //     },
+    //   },
+    // },
+    MuiTooltip: {
+      styleOverrides: {
+        tooltip: {
+          fontSize: 13,
+          padding: '6px 10px'
+        },
+      },
+    },
+  }
+}
+
 const themesConfig = {
   default: {
     palette: {
@@ -24,15 +103,24 @@ const themesConfig = {
         white: 'rgb(255, 255, 255)',
       },
       primary: {
+        // Blue
         light: '#B3F1FE',
         main: '#0EA5E9',
         dark: '#00B2FC',
+        //// Green
+        // light: '#B3EBD6',
+        // main: '#00BC77',
+        // dark: '#009747',
+        // // Yellow
+        // light: '#FFE3BF',
+        // main: '#FFB049',
+        // dark: '#FF8619',
         contrastText: darkPaletteText.primary,
       },
       secondary: {
-        light: '#B3F1FE',
-        main: '#0EA5E9',
-        dark: '#00B2FC',
+        light: '#FFE3BF',
+        main: '#FFB049',
+        dark: '#FF8619',
         contrastText: darkPaletteText.primary,
       },
       background: {
@@ -48,44 +136,7 @@ const themesConfig = {
     status: {
       danger: 'orange',
     },
-    typography: {
-      fontFamily: ['Poppins', 'Inter var', 'Roboto', '"Helvetica"', 'Arial', 'sans-serif'].join(','),
-    },
-    components: {
-      // MuiOutlinedInput: {
-      //   styleOverrides: {
-      //     root: {
-      //       '&:hover fieldset': {
-      //         borderColor: 'rgb(140 140 141)',
-      //       },
-      //     },
-      //   },
-      // },
-      MuiInputBase: {
-        styleOverrides: {
-          root: {
-            minHeight: 40,
-            lineHeight: 1,
-            borderRadius: '8px!important',
-          },
-        },
-      },
-      MuiTooltip: {
-        styleOverrides: {
-          tooltip: {
-            // color: 'inherit',
-            // backgroundColor: 'white',
-            fontSize: 13,
-            padding: '6px 10px'
-          },
-        },
-      },
-      MuiButtonBase: {
-        defaultProps: {
-          disableRipple: false,
-        },
-      },
-    }
+    ...customTheme
   },
   defaultDark: {
     palette: {

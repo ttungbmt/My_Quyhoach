@@ -30,8 +30,11 @@ class MapController extends Controller
                 'overlay_layers' => [
 //                ['selected' => true, 'type' => 'wmts', 'layers' => 'tddo:pg_tinh_tp', 'title' => 'Ranh tỉnh/tp', 'url' => '/geoserver/wms', 'isOpacity' => true, 'zIndex' => 120],
 //                ['selected' => false, 'type' => 'wmts', 'layers' => 'tddo:pg_quyanhuyen', 'title' => 'Ranh quận huyện', 'url' => '/geoserver/wms', 'isOpacity' => true, 'zIndex' => 125],
-                    ['selected' => false, 'type' => 'wmts', 'layers' => 'tddo:pg_phuongxa', 'title' => 'Ranh phường xã', 'url' => '/geoserver/wms', 'isOpacity' => true, 'zIndex' => 130],
-                    ['selected' => false, 'type' => 'wms', 'layers' => 'tddo:v_thuadat', 'title' => 'Thửa đất', 'url' => '/geoserver/wms', 'isOpacity' => true, 'zIndex' => 100],
+                    ['selected' => true, 'popup' => false, 'type' => 'wmts', 'layers' => 'tddo:pg_phuongxa', 'title' => 'Ranh phường xã', 'url' => '/geoserver/wms', 'isOpacity' => true, 'zIndex' => 130],
+                    ['selected' => true, 'popup' => [
+                        'url' => '/api/thuadats/view/{id}',
+                        'layout' => 'pop-thuadat'
+                    ], 'type' => 'wms', 'layers' => 'tddo:v_thuadat', 'title' => 'Thửa đất', 'url' => '/geoserver/wms', 'isOpacity' => true, 'zIndex' => 100],
                 ]
             ]
         ];

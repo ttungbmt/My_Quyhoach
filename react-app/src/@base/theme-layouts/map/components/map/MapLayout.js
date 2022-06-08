@@ -5,8 +5,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { MapContainer, TileLayer, ZoomControl } from 'react-leaflet'
 
 import { selectMapOptions, setCenter } from '@redux-leaflet/store/configSlice'
-import { selectBasemap, selectOverlays } from '@redux-leaflet/store/layersSlice'
-import { MapEvents, updateMapSize, reducer, OnChangeBounds } from '@redux-leaflet'
+import { selectBasemap, selectOverlaysSelected } from '@redux-leaflet/store/layersSlice'
+import { MapEvents, updateMapSize, reducer, OnChangeBounds, WMSPopup } from '@redux-leaflet'
 import MapRoutes from '@base/components/Direction/MapRoutes'
 import { selectPlace } from '@base/components/Search/store/placeSlice'
 import { useUpdateEffect } from 'react-use'
@@ -19,7 +19,7 @@ function MapLayout(props) {
   const dispatch = useDispatch()
   const { loading, bounds, ...mapOptions } = useSelector(selectMapOptions)
   const basemap = useSelector(selectBasemap)
-  const overlays = useSelector(selectOverlays)
+  const overlays = useSelector(selectOverlaysSelected)
   const [mapRef, DOMRect] = updateMapSize()
   const place  = useSelector(selectPlace)
 
@@ -40,6 +40,8 @@ function MapLayout(props) {
           {overlays?.map(({component: Component, id, ...props}) => (
             <Component key={id} {...props}/>
           ))}
+
+          <WMSPopup />
 
           <MapRoutes />
         </MapContainer>

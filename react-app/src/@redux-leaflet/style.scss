@@ -1,3 +1,7 @@
+.leaflet-grab {
+  cursor: inherit!important;
+}
+
 .leaflet-control-attribution {
   > a[href="https://leafletjs.com"] {display: none}
   > span {display: none}
