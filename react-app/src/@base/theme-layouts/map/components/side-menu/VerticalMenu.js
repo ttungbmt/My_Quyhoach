@@ -18,12 +18,12 @@ function isDark(color) {
 }
 
 const Root = styled('div')(({theme}) => ({
-  // backgroundColor: theme.palette.background.default,
-  backgroundImage: 'linear-gradient(0deg, #9AD7F5 0%, #039BE5 100%)',
+  backgroundColor: theme.palette.background.paper,
+  // backgroundImage: 'linear-gradient(0deg, #9AD7F5 0%, #039BE5 100%)',
   color: theme.palette.text.primary,
   width: 64,
   height: '100%',
-  zIndex: 30,
+  zIndex: 99,
 
   '& .fuse-list-item': {
     minWidth: iconSize,
@@ -33,6 +33,8 @@ const Root = styled('div')(({theme}) => ({
     borderRadius: 12,
     margin: '0 0 8px 0',
     color: alpha(theme.palette.text.primary, 0.7),
+    // color: 'red',
+
     cursor: 'pointer',
     textDecoration: 'none!important',
     // padding: 0,
@@ -62,7 +64,8 @@ const Root = styled('div')(({theme}) => ({
         color: 'inherit',
       },
       '& .fuse-list-item-icon': {
-        color: 'inherit',
+        // color: 'inherit',
+        color: '#ea384d',
       },
     },
     '& .fuse-list-item-icon': {
@@ -75,14 +78,14 @@ const Root = styled('div')(({theme}) => ({
 
 function VerticalMenu({selectedId}){
   const dispatch = useDispatch()
-  const mainThemeDark = useSelector(selectMainThemeDark)
+  const mainThemeDark = useSelector(selectMainTheme)
   const mainTheme = useSelector(selectMainTheme)
   const navigation = useSelector(selectNavigation);
 
   return (
     <ThemeProvider theme={mainThemeDark}>
       <Root>
-        <List className="flex flex-col justify-between items-center h-full">
+        <List className="flex flex-col justify-between items-center h-full shadow-md">
           <div className="flex flex-col">
             {navigation.map((item) => (
               <Tooltip key={item.id} title={item.title || ''} placement="right">

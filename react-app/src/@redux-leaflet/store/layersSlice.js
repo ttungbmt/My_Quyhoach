@@ -78,7 +78,9 @@ export const selectOverlays = createSelector([selectLayers], (layers) => {
           return <TileLayer {...props}/>
         }
 
-        if(props.type === 'wms') return <WMSTileLayer transparent={true} format="image/png" {...props}/>
+        if(props.type === 'wms') {
+          return <WMSTileLayer transparent={true} format="image/png" {...props}/>
+        }
 
         return null
       },

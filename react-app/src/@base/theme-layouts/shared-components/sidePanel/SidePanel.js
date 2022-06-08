@@ -37,7 +37,7 @@ function SidePanel(props) {
         onClose={(ev) => dispatch(toggleSidePanel(name))}
         disableSwipeToOpen
         ModalProps={{
-          keepMounted: true,
+          keepMounted: false,
         }}
         {...drawerProps}
       >

@@ -32,7 +32,7 @@ class MapController extends Controller
 //                ['selected' => false, 'type' => 'wmts', 'layers' => 'tddo:pg_quyanhuyen', 'title' => 'Ranh quận huyện', 'url' => '/geoserver/wms', 'isOpacity' => true, 'zIndex' => 125],
                     ['selected' => false, 'type' => 'wmts', 'layers' => 'tddo:pg_phuongxa', 'title' => 'Ranh phường xã', 'url' => '/geoserver/wms', 'isOpacity' => true, 'zIndex' => 130],
                     ['selected' => false, 'type' => 'wmts', 'layers' => 'tddo:v_quyhoach', 'title' => 'Quy hoạch SDĐ', 'url' => '/geoserver/wms', 'isOpacity' => true, 'zIndex' => 90],
-                    ['selected' => false, 'type' => 'wms', 'layers' => 'tddo:v_thuadat', 'title' => 'Thửa đất', 'url' => '/geoserver/wms', 'isOpacity' => true, 'zIndex' => 100],
+                    ['selected' => false, 'type' => 'wmts', 'layers' => 'tddo:v_thuadat', 'title' => 'Thửa đất', 'url' => '/geoserver/wms', 'isOpacity' => true, 'zIndex' => 100],
                 ]
             ]
         ];

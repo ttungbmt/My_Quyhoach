@@ -26,6 +26,13 @@ module.exports = function (app) {
     );
 
     app.use(
+        '/admin',
+        createProxyMiddleware({
+            target: process.env.REACT_APP_URL,
+            changeOrigin: true
+        })
+    );
+    app.use(
         '/api',
         createProxyMiddleware({
             target: process.env.REACT_APP_URL,

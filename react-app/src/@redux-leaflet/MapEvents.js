@@ -10,7 +10,7 @@ function MapEvents(){
       dispatch(onMoveEnd({center: target.getCenter(), zoom: target.getZoom()}))
     },
     click(e) {
-      console.log(e)
+      // console.log(e)
       // console.log(e)
     },
   })
