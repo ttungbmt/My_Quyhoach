@@ -5,11 +5,12 @@ import { useDispatch, useSelector } from 'react-redux'
 import { MapContainer, TileLayer, ZoomControl } from 'react-leaflet'
 
 import { selectMapOptions, setCenter } from '@redux-leaflet/store/configSlice'
-import { selectBasemap, selectOverlaysSelected } from '@redux-leaflet/store/layersSlice'
-import { MapEvents, updateMapSize, reducer, OnChangeBounds, WMSPopup } from '@redux-leaflet'
+import { selectBasemap, selectOverlays } from '@redux-leaflet/store/layersSlice'
+import { MapEvents, updateMapSize, reducer, OnChangeBounds, LocateControl } from '@redux-leaflet'
 import MapRoutes from '@base/components/Direction/MapRoutes'
 import { selectPlace } from '@base/components/Search/store/placeSlice'
 import { useUpdateEffect } from 'react-use'
+import ThuadatWMS from "@base/theme-layouts/map/components/map/ThuadatWMS";
 
 const Root = styled('div')(({ theme, opened }) => ({
   height: '100%'
@@ -35,15 +36,16 @@ function MapLayout(props) {
           <MapEvents />
           {/*<ZoomControl position="bottomright"/>*/}
 
-          {basemap && (<TileLayer key={basemap.id} {...basemap} />)}
+          {basemap && (<TileLayer key={basemap.id} {...basemap}/>)}
 
           {overlays?.map(({component: Component, id, ...props}) => (
-            <Component key={id} {...props}/>
+            <Component key={id} maxZoom={22} {...props}/>
           ))}
 
-          <WMSPopup />
+          <LocateControl position="bottomright" flyTo icon="fa-solid fa-location-crosshairs text-[17px]"/>
 
           <MapRoutes />
+          <ThuadatWMS />
         </MapContainer>
       )}
     </Root>

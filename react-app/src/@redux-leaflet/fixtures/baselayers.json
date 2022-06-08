@@ -4,41 +4,47 @@
     "name": "mapbox",
     "title": "Mapbox Street",
     "url": "https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibWljaGFlbGRvcm1hbiIsImEiOiJjaXZwY2U0Z2IwMDF0MnRwOHF5MHYzeHM0In0.UdcEo0k-jS29ebI_fhIpMw",
-    "attribution": "&copy; <a href=\"mapbox.com\">Mapbox</a>"
+    "attribution": "&copy; <a href=\"mapbox.com\">Mapbox</a>",
+    "maxZoom": 22
   },
   {
     "type": "xyz",
     "name": "osm",
     "title": "OSM",
     "url": "http://tile.openstreetmap.org/{z}/{x}/{y}.png",
-    "attribution": "&copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors"
+    "attribution": "&copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors",
+    "maxZoom": 19
   },
   {
     "type": "xyz",
     "name": "vietbando",
     "title": "Vietbando",
     "url": "http://images.vietbando.com/ImageLoader/GetImage.ashx?Ver=2016&LayerIds=VBD&Y={y}&X={x}&Level={z}",
-    "attribution": "&copy; <a href=\"http://maps.vietbando.com\">Vietbando</a>"
+    "attribution": "&copy; <a href=\"http://maps.vietbando.com\">Vietbando</a>",
+    "maxZoom": 19
   },
   {
     "type": "xyz",
     "name": "google-maps",
     "title": "Google Maps",
     "url": "http://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}",
-    "attribution": "&copy; <a href=\"https://www.google.com/maps\">Google</a>"
+    "attribution": "&copy; <a href=\"https://www.google.com/maps\">Google</a>",
+    "maxZoom": 22
   },
   {
     "type": "xyz",
     "name": "google-satellite",
     "title": "Google Satellite",
     "url": "http://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}",
-    "attribution": "&copy; <a href=\"https://www.google.com/maps\">Google</a>"
+    "attribution": "&copy; <a href=\"https://www.google.com/maps\">Google</a>",
+    "maxZoom": 22
   },
   {
     "type": "xyz",
     "name": "google-satellite-hybrid",
     "title": "Google Satellite Hybrid",
     "url": "http://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}",
-    "attribution": "&copy; <a href=\"https://www.google.com/maps\">Google</a>"
+    "attribution": "&copy; <a href=\"https://www.google.com/maps\">Google</a>",
+    "maxZoom": 22
   }
 ]

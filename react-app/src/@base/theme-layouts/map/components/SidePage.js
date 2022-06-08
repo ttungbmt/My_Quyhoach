@@ -2,6 +2,7 @@ import { styled } from '@mui/material/styles'
 import FusePageSimple from '@fuse/core/FusePageSimple/FusePageSimple'
 import SideHeader from '@base/theme-layouts/map/components/SideHeader'
 import { useTitle } from '@base/hooks'
+import {LinearProgress} from "@mui/material";
 
 const Root = styled(FusePageSimple)(({ theme }) => ({
   '& .FusePageSimple-header': {
@@ -17,7 +18,7 @@ const Root = styled(FusePageSimple)(({ theme }) => ({
   },
 }));
 
-function SidePage({className, title, content, toolbar}){
+function SidePage({className, title, content, toolbar, loading}){
   useTitle(title)
 
   return (
@@ -32,6 +33,7 @@ function SidePage({className, title, content, toolbar}){
               {toolbar}
             </>
           )}
+          {loading && <LinearProgress/>}
         </>
       )}
       content={content}

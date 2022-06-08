@@ -46,7 +46,7 @@ const items = [
     type: 'item',
     title: 'Thông tin chi tiết',
     iconClass: 'fa-light fa-square-info',
-    url: '/maps/info',
+    url: '/maps/thong-tin-thua-dat',
   },
   {
     id: 'dir',

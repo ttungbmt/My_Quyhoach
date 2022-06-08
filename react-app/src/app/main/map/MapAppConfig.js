@@ -8,6 +8,7 @@ const Search = lazy(() => import('@base/components/Search/Search'));
 const SearchThuadat = lazy(() => import('./SearchThuadat/SearchThuadat'));
 const RanhgioiHc = lazy(() => import('./RanhgioiHc/RanhgioiHc.js'));
 const Info = lazy(() => import('./Info/Info'));
+const InfoThuadat = lazy(() => import('./InfoThuadat/InfoThuadat'));
 // const Direction = lazy(() => import('@base/components/Direction/Direction'));
 const Direction = require('@base/components/Direction/Direction').default;
 
@@ -45,6 +46,14 @@ const MapsAppConfig = {
     {
       path: 'maps/dir',
       element: <Direction />,
+    },
+    {
+      path: 'maps/thong-tin-thua-dat',
+      element: <InfoThuadat />,
+    },
+    {
+      path: 'maps/thong-tin-thua-dat/:id',
+      element: <InfoThuadat />,
     },
   ],
 };

@@ -53,6 +53,8 @@ function BasemapLayout({ heading }) {
     dragging: false
   }
 
+  console.log(1111)
+
   return (
     <Root
       heading={t(heading)}
