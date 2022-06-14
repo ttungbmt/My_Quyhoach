@@ -15,7 +15,8 @@ function IntroLayout({heading, closeBtn}){
         {isLoading && <LinearProgress sx={{mt: 1}}/>}
         <Box sx={{
           '& strong': {fontWeight: 600},
-          '& > p': {pb: 2}
+          '& > p': {pb: 2},
+          '& > p + ul': {listStyle: 'inherit', pl: 3, pb: 2},
         }} className="text-[16px]" dangerouslySetInnerHTML={{ __html: data?.content }} />
       </DialogContent>
     </>

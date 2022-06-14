@@ -14,7 +14,7 @@ const items = [
     id: 'menu',
     title: 'Menu',
     type: 'item',
-    icon: 'menu',
+    iconClass: 'fa-light fa-bars',
     action: {
       type: toggleSidePanel.type,
       payload: 'menu'
@@ -24,28 +24,28 @@ const items = [
     id: 'layers',
     title: 'Lớp dữ liệu',
     type: 'item',
-    icon: 'layers',
+    iconClass: 'fa-light fa-layer-group',
     url: '/maps/layers',
   },
   {
     id: 'search',
     type: 'item',
     title: 'Tìm kiếm vị trí',
-    icon: 'search',
+    iconClass: 'fa-light fa-magnifying-glass',
     url: '/maps/search',
   },
   {
     id: 'search-thuadat',
     type: 'item',
     title: 'Tìm kiếm thửa đất',
-    iconClass: 'fa-regular fa-magnifying-glass-location',
+    iconClass: 'fa-light fa-map-location',
     url: '/maps/tim-kiem-thua-dat',
   },
   {
     id: 'info',
     type: 'item',
     title: 'Thông tin chi tiết',
-    iconClass: 'fa-light fa-square-info',
+    iconClass: 'fa-light fa-circle-info',
     url: '/maps/thong-tin-thua-dat',
   },
   {

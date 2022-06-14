@@ -40,7 +40,7 @@ function SideHeader({back, title}){
           {/*{back && <IconButton size="medium" onClick={() => history.goBack()}><i className="fal fa-long-arrow-left text-[15px]" /></IconButton>}*/}
         </div>
         <div className="flex gap-10">
-          <img className="site-logo" src={env('LOGO')} alt="Logo"/>
+          {/*<img className="site-logo" src={env('LOGO')} alt="Logo"/>*/}
           <div className="flex flex-col uppercase gap-2">
             <div className="site-name text-primary text-2xl font-semibold">{siteTitle}</div>
             <div className="site-title flex text-[11px] font-semibold gap-4 text-blue">

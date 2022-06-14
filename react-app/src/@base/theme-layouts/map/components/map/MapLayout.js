@@ -5,12 +5,14 @@ import { useDispatch, useSelector } from 'react-redux'
 import { MapContainer, TileLayer, ZoomControl } from 'react-leaflet'
 
 import { selectMapOptions, setCenter } from '@redux-leaflet/store/configSlice'
-import { selectBasemap, selectOverlays } from '@redux-leaflet/store/layersSlice'
+import {selectBasemap, selectOverlaysSelected} from '@redux-leaflet/store/layersSlice'
 import { MapEvents, updateMapSize, reducer, OnChangeBounds, LocateControl } from '@redux-leaflet'
 import MapRoutes from '@base/components/Direction/MapRoutes'
 import { selectPlace } from '@base/components/Search/store/placeSlice'
 import { useUpdateEffect } from 'react-use'
 import ThuadatWMS from "@base/theme-layouts/map/components/map/ThuadatWMS";
+import BasemapControl from './BasemapControl'
+import SliderControl from "@base/theme-layouts/map/components/map/SliderControl";
 
 const Root = styled('div')(({ theme, opened }) => ({
   height: '100%'
@@ -31,22 +33,28 @@ function MapLayout(props) {
   return (
     <Root ref={mapRef}>
       {DOMRect && loading && (
-        <MapContainer {...mapOptions}>
-          <OnChangeBounds bounds={bounds}/>
-          <MapEvents />
-          {/*<ZoomControl position="bottomright"/>*/}
+        <>
+          <BasemapControl />
+          <SliderControl />
 
-          {basemap && (<TileLayer key={basemap.id} {...basemap}/>)}
+          <MapContainer {...mapOptions}>
+            <OnChangeBounds bounds={bounds}/>
+            <MapEvents />
+            {/*<ZoomControl position="bottomright"/>*/}
 
-          {overlays?.map(({component: Component, id, ...props}) => (
-            <Component key={id} maxZoom={22} {...props}/>
-          ))}
+            {basemap && (<TileLayer key={basemap.id} {...basemap}/>)}
 
-          <LocateControl position="bottomright" flyTo icon="fa-solid fa-location-crosshairs text-[17px]"/>
+            {overlays?.map(({component: Component, id, ...props}) => (
+                <Component key={id} maxZoom={22} {...props}/>
+            ))}
 
-          <MapRoutes />
-          <ThuadatWMS />
-        </MapContainer>
+            <LocateControl position="bottomright" flyTo icon="fa-solid fa-location-crosshairs text-[17px]"/>
+
+            <MapRoutes />
+            <ThuadatWMS />
+
+          </MapContainer>
+        </>
       )}
     </Root>
   );

@@ -6,10 +6,10 @@ import { selectBasemapId, addBaseLayers, setBasemapId, addLayers } from '@redux-
 import { addDataSidePanel } from '@base/theme-layouts/shared-components/sidePanel/store/dataSlice'
 
 const initialMenuItems = [
-  {name: 'intro', title: 'Giới thiệu', iconClass: 'fa-solid fa-browser'},
-  {name: 'doc', title: 'Hướng dẫn sử dụng', iconClass: 'fa-solid fa-book-sparkles'},
-  {name: 'faq', title: 'Câu hỏi thường gặp', iconClass: 'fa-solid fa-cloud-question'},
-  {name: 'feedback', title: 'Đánh giá & Góp ý', iconClass: 'fa-solid fa-message-lines'},
+  {name: 'intro', title: 'Giới thiệu', iconClass: 'fa-regular fa-browser'},
+  {name: 'doc', title: 'Hướng dẫn sử dụng', iconClass: 'fa-regular fa-film'},
+  {name: 'faq', title: 'Câu hỏi thường gặp', iconClass: 'fa-regular fa-cloud-question'},
+  {name: 'feedback', title: 'Đánh giá & Góp ý', iconClass: 'fa-regular fa-message'},
 ]
 
 function useAppConfig() {
