@@ -1,7 +1,6 @@
 import * as React from "react";
 import ToadoTab from "./ToadoTab";
 import SothuaTab from "./SothuaTab";
-import DiachiTab from "./DiachiTab";
 import {Tab, Tabs} from "@mui/material";
 import useThuadatStore from "./useThuadatStore";
 import SidePage from '@base/theme-layouts/map/components/SidePage'
@@ -14,7 +13,6 @@ function SearchThuadat(){
     const tabs = [
         {label: 'Tọa độ', content: ToadoTab},
         {label: 'Số thửa đất', content: SothuaTab},
-        {label: 'Địa chỉ', content: DiachiTab},
     ]
 
     return (

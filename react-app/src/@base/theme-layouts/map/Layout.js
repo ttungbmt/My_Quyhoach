@@ -19,6 +19,8 @@ import DocLayout from './components/dialogs/DocLayout'
 import IntroLayout from './components/dialogs/IntroLayout'
 import FAQLayout from './components/dialogs/FAQLayout'
 import FeedbackLayout from './components/dialogs/FeedbackLayout'
+import ShareLayout from './components/dialogs/ShareLayout'
+import DeleteConfirmationLayout from './components/dialogs/DeleteConfirmationLayout'
 
 import MenuLayout from './components/drawer-panel/MenuLayout'
 import BasemapLayout from './components/drawer-panel/BasemapLayout'
@@ -28,6 +30,8 @@ import MyDialog from "@base/components/MyDialog";
 import SideMenu from './components/side-menu/SideMenu'
 import MapLayout from './components/map/MapLayout'
 import {MapboxLayout} from '@redux-mapbox'
+import SaveThuadatLayout from "../../../app/main/map/InfoThuadat/SaveThuadatLayout";
+import SearchBar from "./components/SearchBar";
 
 const Root = styled('div')(({ theme, config }) => ({
   ...(config.mode === 'boxed' && {
@@ -49,6 +53,9 @@ registerLayout('intro', IntroLayout)
 registerLayout('doc', DocLayout)
 registerLayout('faq', FAQLayout)
 registerLayout('feedback', FeedbackLayout)
+registerLayout('share', ShareLayout)
+registerLayout('delete-confirmation', DeleteConfirmationLayout)
+registerLayout('save-thuadat', SaveThuadatLayout)
 
 registerLayout('menu', MenuLayout)
 registerLayout('legend', LegendLayout)
@@ -72,12 +79,13 @@ function Layout(props) {
         {config.navbar.display && config.navbar.position === 'left' && <SidebarWrapperLayout />}
 
         <main id="fuse-main" className={clsx("flex flex-col flex-auto min-h-full min-w-0 relative z-10", {'pb-[50px]': mdDown})}>
+          <SearchBar />
           {config.toolbar.display && (
             <ToolbarLayout className={config.toolbar.style === 'fixed' && 'sticky top-0'} />
           )}
 
           <div className="sticky top-0 z-99">
-            {/*<SettingsPanel />*/}
+            <SettingsPanel />
           </div>
 
           <div className="flex flex-col flex-auto min-h-0 relative z-10">

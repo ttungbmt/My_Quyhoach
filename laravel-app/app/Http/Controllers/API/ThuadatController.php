@@ -3,13 +3,15 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Models\Thuadat;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class ThuadatController extends Controller
 {
     public function view($id){
-        $model = Thuadat::findOrFail($id);
+        $model = Thuadat::with('favoriters')->findOrFail($id);
         return $this->formatThuadat($model);
     }
 
@@ -27,6 +29,7 @@ class ThuadatController extends Controller
             ORDER BY SUM(ST_Area(its_geom::geography)) DESC
         SQL);
 
+
         return [
             'id' => $model->id,
             'tinh_tp' => 'Lâm Đồng',
@@ -36,7 +39,9 @@ class ThuadatController extends Controller
             'soto' => $model->shbando,
             'dientich' => $model->dientich,
             'geometry' => $model->geom,
-            'quyhoachs' => $quyhoachs
+            'quyhoachs' => $quyhoachs,
+            'is_favorited' => $model->isFavoritedBy(Auth::user()),
+            'views_count' => $model->viewsCountReadable()
         ];
     }
 
@@ -65,5 +70,15 @@ class ThuadatController extends Controller
         }
 
         return $this->formatThuadat($model->first());
+    }
+
+    public function toggleFavorite($id){
+        Auth::user()->toggleFavorite(Thuadat::find($id));
+        return ['status' => 'OK'];
+    }
+
+    public function increaseViewCount($id){
+        Auth::user()->viewThuadat(Thuadat::find($id));
+        return ['status' => 'OK'];
     }
 }

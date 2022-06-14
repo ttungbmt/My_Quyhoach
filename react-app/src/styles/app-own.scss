@@ -27,6 +27,7 @@
 
 .text-primary {
   @extend .text-gradient-red
+  //color: #FC2E58;
 }
 
 .text-red {
@@ -40,6 +41,7 @@
   //background-image: linear-gradient(90deg,#b6246e 0%,#f9636b 100%);
   //background-image: linear-gradient(90deg,#EA3B50 0%,#FB7949 100%);
 }
+
 
 //
 //.bg-red {

@@ -8,6 +8,7 @@
               "@mock-api": ["./src/@mock-api"],
               "@base/*": ["./src/@base/*"],
               "@redux-form": ["./src/@redux-form"],
+              "@redux-leaflet": ["./src/@redux-leaflet"],
               "@redux-leaflet/*": ["./src/@redux-leaflet/*"],
               "@redux-mapbox": ["./src/@redux-mapbox"],
               "app/store/*": ["./src/app/store/*"],
