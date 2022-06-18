@@ -11,13 +11,13 @@ function SliderControl(){
                 <MySvgIcon className="fa-solid fa-ellipsis-vertical text-[16px]" color="primary"/>
             </IconButton>
             <IconButton disableRipple sx={{p: 0}}>
-                <MySvgIcon className="fa-solid fa-circle-plus" color="primary"/>
+                <MySvgIcon className="w-auto fa-solid  fa-lightbulb-on text-[22px]" color="primary"/>
             </IconButton>
             <Slider defaultValue={50} valueLabelDisplay="auto" orientation="vertical" size="small" sx={{p: 0, height: 150}} components={{
                 Thumb: SliderThumb
             }}/>
             <IconButton disableRipple sx={{p: 0}}>
-                <MySvgIcon className="fa-solid fa-circle-minus" color="primary"/>
+                <MySvgIcon className="w-auto fa-solid fa-lightbulb text-[22px]" color="primary"/>
             </IconButton>
         </Paper>
     )

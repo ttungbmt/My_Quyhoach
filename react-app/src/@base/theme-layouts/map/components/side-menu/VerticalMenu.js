@@ -11,6 +11,7 @@ import LanguageSwitcher from '@base/theme-layouts/shared-components/LanguageSwit
 import { toggleSidePanel } from '@base/theme-layouts/shared-components/sidePanel/store/stateSlice'
 import UserMenu from 'app/theme-layouts/shared-components/UserMenu'
 import {env} from "@base/utils";
+import {selectFuseNavbar} from "app/store/fuse/navbarSlice";
 
 const iconSize = 50
 
@@ -82,13 +83,14 @@ function VerticalMenu({selectedId}){
   const mainThemeDark = useSelector(selectMainTheme)
   const mainTheme = useSelector(selectMainTheme)
   const navigation = useSelector(selectNavigation);
+  const navbarOpen = useSelector(state => selectFuseNavbar(state)?.open)
 
   return (
     <ThemeProvider theme={mainThemeDark}>
       <Root>
         <List className="flex flex-col justify-between items-center h-full shadow-xl">
           <div className="flex flex-col items-center max-w-[75%]">
-            <a href={env('HOMEPAGE')} className="my-12"><img className="site-logo" src={env('LOGO')} alt="Logo"/></a>
+            {!navbarOpen && <a href={env('HOMEPAGE')} className="my-12"><img className="site-logo" src={env('LOGO')} alt="Logo"/></a>}
             {navigation.map((item) => (
               <Tooltip key={item.id} title={item.title || ''} placement="right">
                 <ListItem
