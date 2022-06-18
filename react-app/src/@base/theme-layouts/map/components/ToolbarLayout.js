@@ -36,7 +36,7 @@ function ToolbarLayout(props) {
   const rightItems = useMemo(() => [
     {name: 'fullscreen', layout: ({ name }) => <FullScreenToggle name={name}/>},
     {name: 'legend', layout: ({ name }) => <SidePanelToggleButton name={name}/>},
-    {name: 'basemap', layout: ({ name }) => <SidePanelToggleButton name={name}/>},
+    // {name: 'basemap', layout: ({ name }) => <SidePanelToggleButton name={name}/>},
     {name: 'account', layout: ({ name }) => <UserMenu name={name}/>},
   ], [])
 
