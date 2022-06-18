@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { navbarCloseMobile, selectFuseNavbar } from 'app/store/fuse/navbarSlice';
 import { selectFuseCurrentLayoutConfig } from 'app/store/fuse/settingsSlice';
 import NavbarStyleContent from './NavbarStyleContent';
+import {useWindowSize} from "react-use";
 
 const navbarWidth = 400;
 
@@ -33,12 +34,14 @@ const StyledNavBar = styled('div')(({ theme, open, position }) => ({
 }));
 const navBarMobileHeight = 'calc(100% - 51px)'
 
-const StyledNavBarMobile = styled(SwipeableDrawer)(({ theme }) => ({
+const StyledNavBarMobile = styled(SwipeableDrawer, {
+  shouldForwardProp: (prop) => !_.includes(['drawerWidth'], prop)
+})(({ theme, drawerWidth }) => ({
   '& .MuiDrawer-paper': {
-    minWidth: navbarWidth,
-    width: navbarWidth,
-    maxWidth: navbarWidth,
-    height: navBarMobileHeight
+    // minWidth: navbarWidth,
+    width: drawerWidth,
+    // maxWidth: navbarWidth,
+    height: navBarMobileHeight,
   },
 }));
 
@@ -46,6 +49,8 @@ function NavbarStyle(props) {
   const dispatch = useDispatch();
   const config = useSelector(selectFuseCurrentLayoutConfig);
   const navbar = useSelector(selectFuseNavbar);
+  const {width: windowWidth} = useWindowSize();
+  const drawerWidth = windowWidth <= navbarWidth ? '100%' : navbarWidth
 
   return (
     <>
@@ -73,6 +78,7 @@ function NavbarStyle(props) {
           ModalProps={{
             keepMounted: true, // Better open performance on mobile.
           }}
+          drawerWidth={drawerWidth}
         >
           <NavbarStyleContent />
         </StyledNavBarMobile>

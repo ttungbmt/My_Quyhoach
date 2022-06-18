@@ -81,7 +81,10 @@ function Layout(props) {
         {config.navbar.display && config.navbar.position === 'left' && <SidebarWrapperLayout />}
 
         <main id="fuse-main" className={clsx("flex flex-col flex-auto min-h-full min-w-0 relative z-10", {'pb-[50px]': mdDown})}>
-          <SearchBar />
+          <Hidden lgDown>
+            <SearchBar />
+          </Hidden>
+
           {config.toolbar.display && (
             <ToolbarLayout className={config.toolbar.style === 'fixed' && 'sticky top-0'} />
           )}
