@@ -32,6 +32,8 @@ import MapLayout from './components/map/MapLayout'
 import {MapboxLayout} from '@redux-mapbox'
 import SaveThuadatLayout from "../../../app/main/map/InfoThuadat/SaveThuadatLayout";
 import SearchBar from "./components/SearchBar";
+import NavbarToggleFab from "@base/theme-layouts/shared-components/NavbarToggleFab";
+import Hidden from "@mui/material/Hidden";
 
 const Root = styled('div')(({ theme, config }) => ({
   ...(config.mode === 'boxed' && {
@@ -84,9 +86,11 @@ function Layout(props) {
             <ToolbarLayout className={config.toolbar.style === 'fixed' && 'sticky top-0'} />
           )}
 
-          <div className="sticky top-0 z-99">
-            <SettingsPanel />
-          </div>
+          <Hidden lgDown>
+            <div className="sticky top-0 z-99">
+              <SettingsPanel />
+            </div>
+          </Hidden>
 
           <div className="flex flex-col flex-auto min-h-0 relative z-10">
             <MyDialog/>

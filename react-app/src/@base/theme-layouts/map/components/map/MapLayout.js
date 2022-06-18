@@ -49,6 +49,7 @@ function MapLayout(props) {
             ))}
 
             <LocateControl position="bottomright" flyTo icon="fa-solid fa-location-crosshairs text-[17px]"/>
+            <ZoomControl position="bottomright"/>
 
             <MapRoutes />
             <ThuadatWMS />
