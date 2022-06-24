@@ -6,19 +6,19 @@ import Slider, {SliderThumb} from "@mui/material/Slider";
 function SliderControl(){
 
     return (
-        <Paper className="absolute flex flex-col justify-between items-center" sx={{zIndex: 999, bottom: 140, right: 10, width: 32, height: 250, p: 0.5}}>
-            <IconButton disableRipple sx={{p: 0, mt: 1}}>
+        <Paper className="absolute flex flex-col justify-between items-center" sx={{zIndex: 999, bottom: 140, right: 10, width: 32, height: 180, p: 0.5}}>
+            {/*<IconButton disableRipple sx={{p: 0, mt: 1}}>
                 <MySvgIcon className="fa-solid fa-ellipsis-vertical text-[16px]" color="primary"/>
             </IconButton>
             <IconButton disableRipple sx={{p: 0}}>
                 <MySvgIcon className="w-auto fa-solid  fa-lightbulb-on text-[22px]" color="primary"/>
-            </IconButton>
-            <Slider defaultValue={50} valueLabelDisplay="auto" orientation="vertical" size="small" sx={{p: 0, height: 150}} components={{
+            </IconButton>*/}
+            <Slider defaultValue={50} valueLabelDisplay="auto" orientation="vertical" size="small" sx={{my: 2}} components={{
                 Thumb: SliderThumb
             }}/>
-            <IconButton disableRipple sx={{p: 0}}>
+           {/* <IconButton disableRipple sx={{p: 0}}>
                 <MySvgIcon className="w-auto fa-solid fa-lightbulb text-[22px]" color="primary"/>
-            </IconButton>
+            </IconButton>*/}
         </Paper>
     )
 }
