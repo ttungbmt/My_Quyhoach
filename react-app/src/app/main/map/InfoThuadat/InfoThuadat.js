@@ -108,7 +108,7 @@ function InfoThuadat({title}) {
             )}
             content={(
                 <div className='w-full p-12'>
-                    <Alert severity='warning' className="text-sm">Lưu ý: Kết quả tra cứu chỉ có giá trị tham khảo. </Alert>
+                    <Alert severity='warning' className="text-sm" icon={false}>Lưu ý: Kết quả tra cứu chỉ có giá trị tham khảo. </Alert>
 
                     {feature && (
                         <div className="pl-6">

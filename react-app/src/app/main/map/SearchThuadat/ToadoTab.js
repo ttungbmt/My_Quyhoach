@@ -79,7 +79,7 @@ function ToadoTab(){
             <FormProvider {...methods}>
                 <form onSubmit={handleSubmit(getThuadatByCoords)}>
                     <Stack spacing={2}>
-                        <Alert severity="warning" className="text-sm flex items-center">Sử dụng hệ tọa độ Quốc gia VN2000 để tìm kiếm</Alert>
+                        <Alert severity="warning" icon={false} className="text-sm flex items-center">Sử dụng hệ tọa độ Quốc gia VN2000 để tìm kiếm</Alert>
 
                         <AutocompleteField name="ma_tp" label="Tỉnh/ TP" url="/api/dir/hc-tinh" queryKey="dirTinhTp"/>
 
