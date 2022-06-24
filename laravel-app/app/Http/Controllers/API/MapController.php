@@ -20,7 +20,7 @@ class MapController extends Controller
             ],
             'map' => [
                 'config' => [
-                    'basemap_id' => 'mapbox',
+                    'basemap_id' => 'google-maps',
                     'bounds' => [
                         [11.506159782409668, 108.35585021972656],
                         [11.615937232971191, 108.42864227294922],

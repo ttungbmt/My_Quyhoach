@@ -15,12 +15,12 @@ function SearchBar() {
             sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 400, backgroundColor: '#fffffff2' }}
             elevation={1}
         >
-            <IconButton sx={{ p: '10px' }} aria-label="menu">
+            {/*<IconButton sx={{ p: '10px' }} aria-label="menu">
                 <MenuIcon />
-            </IconButton>
+            </IconButton>*/}
             <InputBase
                 sx={{ ml: 1, flex: 1 }}
-                placeholder="Tìm kiếm vị trí"
+                placeholder="Nhập địa chỉ, tọa độ vệ tinh để tìm kiếm"
                 inputProps={{ 'aria-label': 'search google maps' }}
             />
             <IconButton type="submit" sx={{ p: '10px' }} aria-label="search">

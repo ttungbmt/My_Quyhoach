@@ -62,10 +62,18 @@ const items = [
     iconClass: 'fa-light fa-sitemap overflow-visible',
     url: '/maps/ranh-gioi-hc',
   },
+  {
+    id: 'my-data',
+    type: 'item',
+    title: 'Dữ liệu của tôi',
+    iconClass: 'fa-light fa-image-polaroid-user overflow-visible',
+    url: '/maps/my-data',
+  },
 ]
 
 const navigationConfig = env('MENUS', _.map(items, 'id').join(',')).split(',').map(id => {
   return _.find(items, {id});
-});
+}).filter(v => !!v);
+
 
 export default navigationConfig;

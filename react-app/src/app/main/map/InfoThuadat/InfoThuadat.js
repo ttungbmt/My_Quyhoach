@@ -89,7 +89,7 @@ function InfoThuadat({title}) {
                                         iconClass: clsx({'fa-solid': feature?.is_favorited, 'fa-regular': !feature?.is_favorited}, 'fa-heart text-red-500 w-auto'),
                                         visible: isExist, onClick: () => toggleFavorite(feature?.id)
                                     },
-                                    {title: 'Số lượt xem', iconClass: 'fa-duotone fa-eye text-orange-500 w-auto', visible: isExist, className: 'text-orange-500', text: feature?.views_count},
+                                    // {title: 'Số lượt xem', iconClass: 'fa-duotone fa-eye text-orange-500 w-auto', visible: isExist, className: 'text-orange-500', text: feature?.views_count},
                                 ].map((i, k) => (
                                     <ActionButton key={k} {...i}/>
                                 ))}
@@ -159,7 +159,7 @@ function InfoThuadat({title}) {
                                                     <div className="col-span-4">Diện tích</div>
                                                     <div className="col-span-8 px-6">{numeral(qh.dientich).format('0,0')} m<sup>2</sup></div>
                                                 </div>
-                                                <img className="absolute top-0 h-full -right-1" src="https://www.bootstrapdash.com/demo/purple/jquery/template/assets/images/dashboard/circle.svg" alt=""/>
+                                                {/*<img className="absolute top-0 h-full -right-1" src="https://www.bootstrapdash.com/demo/purple/jquery/template/assets/images/dashboard/circle.svg" alt=""/>*/}
                                             </div>
                                         </ListItem>
                                     ))}

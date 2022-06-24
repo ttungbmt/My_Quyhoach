@@ -1,4 +1,4 @@
-import { styled, ThemeProvider } from '@mui/material/styles';
+import {styled, ThemeProvider, useTheme} from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Hidden from '@mui/material/Hidden';
 import Toolbar from '@mui/material/Toolbar';
@@ -12,6 +12,9 @@ import SidePanelToggleButton from '@base/theme-layouts/shared-components/sidePan
 import UserMenu from '@base/theme-layouts/shared-components/UserMenu'
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon'
 import FullScreenToggle from '@base/theme-layouts/shared-components/FullScreenToggle'
+import InputBase from "@mui/material/InputBase";
+import * as React from "react";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 const Root = styled('div')(({ theme, config }) => ({
   position: 'absolute',
@@ -30,12 +33,14 @@ const Root = styled('div')(({ theme, config }) => ({
 
 
 function ToolbarLayout(props) {
+  const theme = useTheme();
   const config = useSelector(selectFuseCurrentLayoutConfig);
   const toolbarTheme = useSelector(selectToolbarTheme);
+  const mdDown = useMediaQuery(theme.breakpoints.down('lg'));
 
   const rightItems = useMemo(() => [
-    {name: 'fullscreen', layout: ({ name }) => <FullScreenToggle name={name}/>},
-    {name: 'legend', layout: ({ name }) => <SidePanelToggleButton name={name}/>},
+    {name: 'fullscreen', visible: !mdDown, layout: ({ name }) => <FullScreenToggle name={name}/>},
+    {name: 'legend', visible: !mdDown, layout: ({ name }) => <SidePanelToggleButton name={name}/>},
     // {name: 'basemap', layout: ({ name }) => <SidePanelToggleButton name={name}/>},
     {name: 'account', layout: ({ name }) => <UserMenu name={name}/>},
   ], [])
@@ -60,13 +65,14 @@ function ToolbarLayout(props) {
                         material-twotone:menu_open
                       </FuseSvgIcon>
                     </NavbarToggleButton>
+                    <InputBase placeholder="Nhập địa chỉ, tọa độ vệ tinh để tìm kiếm"/>
                   </Hidden>
                 </>
               )}
             </div>
 
             <div className="flex items-center px-8 h-full overflow-x-auto">
-              {rightItems.map(({ name, layout: Layout }, k) => (
+              {rightItems.filter(v => v.visible !== false).map(({ name, layout: Layout }, k) => (
                 <Layout key={name} name={name}/>
               ))}
             </div>
