@@ -19,6 +19,7 @@ import ls from 'localstorage-slim'
 import {useQuery} from "react-query";
 import axios from 'axios'
 import mapService from "app/services/mapService/mapService";
+import Button from "@mui/material/Button";
 
 function useViewsCount(id){
     // https://api.ipify.org/?format=json
@@ -108,7 +109,11 @@ function InfoThuadat({title}) {
             )}
             content={(
                 <div className='w-full p-12'>
-                    <Alert severity='warning' className="text-sm" icon={false}>Lưu ý: Kết quả tra cứu chỉ có giá trị tham khảo. </Alert>
+                    <Alert severity='warning' className="text-base leading-6" icon={false}>
+                        <span className="font-semibold">Lưu ý</span>: Thông tin quy hoạch chỉ mang tính tham khảo. Quý khách có nhu cầu <span className="font-semibold">xác minh thửa đất, đo đạc, lập họa đồ</span>  bảng vẽ nội nghiệp, cập nhật số mới bở cơ quan nhà nước Xin vui lòng liên hệ <span className="text-red-500 font-semibold">1900-1700, 028-9999-1700</span> để được tư vấn thêm. Hoặc điền mẫu sau
+                    </Alert>
+
+                    <Button variant="outlined" color="primary" className="mt-12" size="medium" fullWidth>Nhập thông tin liên hệ</Button>
 
                     {feature && (
                         <div className="pl-6">
@@ -165,6 +170,9 @@ function InfoThuadat({title}) {
                                     ))}
                                 </Stack>
                             </List>
+                            <div className="font-semibold text-lg mt-12"><span className="text-primary">Tọa độ vệ tinh</span></div>
+                            <Divider className="my-6"/>
+                            <div className="font-medium">{locationStr.split(',').map(v => _.toNumber(v).toFixed(8)).join(', ')}</div>
                         </div>
                     )}
                 </div>
