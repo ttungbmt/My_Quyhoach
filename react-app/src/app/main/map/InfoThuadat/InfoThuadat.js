@@ -156,7 +156,7 @@ function InfoThuadat({title}) {
                                         <ListItem button key={k} sx={{background: `linear-gradient(0deg,${darken(qh.fill_color, 0.07)},${qh.fill_color})`, color: 'black', '&.MuiListItem-root:hover': {backgroundColor: qh.fill_color}}} disablePadding className="rounded-xl">
                                             <div className="flex text-gray-900">
                                                 <div className="min-w-60 flex items-center justify-center text-3xl" style={{backgroundColor: 'hsla(0,0%,100%,.2)'}}>{k+1}</div>
-                                                <div className="p-12 leading-5">
+                                                <div className="p-12 leading-7">
                                                     <div className="px-6">{qh.ma_sdd}</div>
                                                     <div className="px-6 font-semibold">{qh.ten_sdd}</div>
                                                     <div className="px-6">{numeral(qh.dientich).format('0,0')} m<sup>2</sup></div>
