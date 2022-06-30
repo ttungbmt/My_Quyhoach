@@ -147,7 +147,7 @@ function InfoThuadat({title}) {
                                 </tr>
                                 </tbody>
                             </table>
-                            <div className="font-semibold text-lg mt-24"><span className="text-primary">Thông tin quy hoạch</span></div>
+                            <div className="font-semibold text-lg mt-24"><span className="text-primary">Chức năng sử dụng đất</span></div>
                             <Divider className="my-6"/>
                             <div className="mb-6">Nhấn vào các ô chức năng để xem chi tiết</div>
                             <List>
@@ -182,7 +182,7 @@ function InfoThuadat({title}) {
 }
 
 InfoThuadat.defaultProps = {
-    title: 'Thông tin thửa đất'
+    title: 'Thông tin quy hoạch'
 }
 
 export default InfoThuadat
