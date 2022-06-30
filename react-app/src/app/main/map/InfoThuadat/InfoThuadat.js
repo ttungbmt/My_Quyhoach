@@ -122,28 +122,28 @@ function InfoThuadat({title}) {
                             <table>
                                 <tbody>
                                 <tr>
-                                    <td className="font-medium py-4 pr-24">Tỉnh/Thành</td>
-                                    <td>{feature.tinh_tp}</td>
+                                    <td className="py-4 pr-24">Tỉnh/Thành</td>
+                                    <td className="font-semibold">{feature.tinh_tp}</td>
                                 </tr>
                                 <tr>
-                                    <td className="font-medium py-4 pr-24">Quận/Huyện</td>
-                                    <td>{feature.quanhuyen}</td>
+                                    <td className="py-4 pr-24">Quận/Huyện</td>
+                                    <td className="font-semibold">{feature.quanhuyen}</td>
                                 </tr>
                                 <tr>
-                                    <td className="font-medium py-4 pr-24">Phường/Xã</td>
-                                    <td>{feature.phuongxa}</td>
+                                    <td className="py-4 pr-24">Phường/Xã</td>
+                                    <td className="font-semibold">{feature.phuongxa}</td>
                                 </tr>
                                 <tr>
-                                    <td className="font-medium py-4 pr-24">Số thửa</td>
-                                    <td>{feature.sothua}</td>
+                                    <td className="py-4 pr-24">Số thửa</td>
+                                    <td className="font-semibold">{feature.sothua}</td>
                                 </tr>
                                 <tr>
-                                    <td className="font-medium py-4 pr-24">Số tờ</td>
-                                    <td>{feature.soto}</td>
+                                    <td className="py-4 pr-24">Số tờ</td>
+                                    <td className="font-semibold">{feature.soto}</td>
                                 </tr>
                                 <tr>
-                                    <td className="font-medium py-4 pr-24">Diện tích lô đất</td>
-                                    <td>{numeral(feature.dientich).format('0,0')} m<sup>2</sup></td>
+                                    <td className="py-4 pr-24">Diện tích lô đất</td>
+                                    <td className="font-semibold">{numeral(feature.dientich).format('0,0')} m<sup>2</sup></td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -156,10 +156,10 @@ function InfoThuadat({title}) {
                                         <ListItem button key={k} sx={{background: `linear-gradient(0deg,${darken(qh.fill_color, 0.07)},${qh.fill_color})`, color: 'black', '&.MuiListItem-root:hover': {backgroundColor: qh.fill_color}}} disablePadding className="rounded-xl">
                                             <div className="flex text-gray-900">
                                                 <div className="min-w-60 flex items-center justify-center text-3xl" style={{backgroundColor: 'hsla(0,0%,100%,.2)'}}>{k+1}</div>
-                                                <div className="grid grid-cols-12 p-12 leading-5">
-                                                    <div className="col-span-8 px-6">{qh.ma_sdd}</div>
-                                                    <div className="col-span-8 px-6 font-semibold">{qh.ten_sdd}</div>
-                                                    <div className="col-span-8 px-6">{numeral(qh.dientich).format('0,0')} m<sup>2</sup></div>
+                                                <div className="p-12 leading-5">
+                                                    <div className="px-6">{qh.ma_sdd}</div>
+                                                    <div className="px-6 font-semibold">{qh.ten_sdd}</div>
+                                                    <div className="px-6">{numeral(qh.dientich).format('0,0')} m<sup>2</sup></div>
                                                 </div>
                                                 {/*<img className="absolute top-0 h-full -right-1" src="https://www.bootstrapdash.com/demo/purple/jquery/template/assets/images/dashboard/circle.svg" alt=""/>*/}
                                             </div>
