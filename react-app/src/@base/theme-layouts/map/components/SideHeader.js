@@ -44,7 +44,7 @@ function SideHeader({back, title}){
         </NavbarToggleButton>
       </div>
       <div className="border-t px-[10px] py-8">
-        <Typography className="font-semibold uppercase text-primary" component="span"> > {title}</Typography>
+        <Typography className="font-semibold uppercase text-primary text-[16px]" component="span"> > {title}</Typography>
       </div>
 
 

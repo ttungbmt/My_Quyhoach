@@ -110,7 +110,7 @@ function InfoThuadat({title}) {
             content={(
                 <div className='w-full p-12'>
                     <Alert severity='warning' className="text-base leading-6" icon={false}>
-                        <span className="font-semibold">Lưu ý</span>: Thông tin quy hoạch chỉ mang tính tham khảo. Quý khách có nhu cầu <span className="font-semibold">xác minh thửa đất, đo đạc, lập họa đồ</span>  bảng vẽ nội nghiệp, cập nhật số mới bở cơ quan nhà nước Xin vui lòng liên hệ <span className="text-red-500 font-semibold">1900-1700, 028-9999-1700</span> để được tư vấn thêm. Hoặc điền mẫu sau
+                        <span className="font-semibold">Lưu ý</span>: Thông tin quy hoạch chỉ mang tính tham khảo. Quý khách có nhu cầu <span className="font-semibold">xác minh thửa đất, đo đạc, lập họa đồ</span>  bảng vẽ nội nghiệp, cập nhật số mới bởi cơ quan nhà nước. <br/>Xin vui lòng liên hệ <span className="text-red-500 font-semibold">1900-1700, 028-9999-1700</span> để được tư vấn thêm. Hoặc điền mẫu sau
                     </Alert>
 
                     <Button variant="outlined" color="primary" className="mt-12" size="medium" fullWidth>Nhập thông tin liên hệ</Button>
@@ -155,13 +155,10 @@ function InfoThuadat({title}) {
                                     {feature.quyhoachs.map((qh, k) => (
                                         <ListItem button key={k} sx={{background: `linear-gradient(0deg,${darken(qh.fill_color, 0.07)},${qh.fill_color})`, color: 'black', '&.MuiListItem-root:hover': {backgroundColor: qh.fill_color}}} disablePadding className="rounded-xl">
                                             <div className="flex text-gray-900">
-                                                <div className="min-w-60 flex items-center justify-center text-2xl" style={{backgroundColor: 'hsla(0,0%,100%,.2)'}}>{k+1}</div>
-                                                <div className="grid grid-cols-12 p-12 text-sm leading-5">
-                                                    <div className="col-span-4">Mã SDĐ</div>
+                                                <div className="min-w-60 flex items-center justify-center text-3xl" style={{backgroundColor: 'hsla(0,0%,100%,.2)'}}>{k+1}</div>
+                                                <div className="grid grid-cols-12 p-12 leading-5">
                                                     <div className="col-span-8 px-6">{qh.ma_sdd}</div>
-                                                    <div className="col-span-4">Chức năng sử dụng</div>
-                                                    <div className="col-span-8 px-6">{qh.ten_sdd}</div>
-                                                    <div className="col-span-4">Diện tích</div>
+                                                    <div className="col-span-8 px-6 font-semibold">{qh.ten_sdd}</div>
                                                     <div className="col-span-8 px-6">{numeral(qh.dientich).format('0,0')} m<sup>2</sup></div>
                                                 </div>
                                                 {/*<img className="absolute top-0 h-full -right-1" src="https://www.bootstrapdash.com/demo/purple/jquery/template/assets/images/dashboard/circle.svg" alt=""/>*/}
