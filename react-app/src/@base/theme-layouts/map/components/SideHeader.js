@@ -38,7 +38,7 @@ function SideHeader({back, title}){
   return (
     <Root>
       <div className="site-logo-wrapper">
-        <img className="site-logo" src="https://tongdaidiaoc.com.vn/_nuxt/img/logo_tddo_dark.91bbd78.png" alt="" style={{height: 70}}/>
+        <img className="site-logo" src="https://tongdaidiaoc.com.vn/_nuxt/img/logo_tddo_dark.60c70e4.png" alt="" style={{height: 70}}/>
         <NavbarToggleButton className="w-40 h-40 p-0">
           <FuseSvgIcon size={20} color="action">material-twotone:menu_open</FuseSvgIcon>
         </NavbarToggleButton>
