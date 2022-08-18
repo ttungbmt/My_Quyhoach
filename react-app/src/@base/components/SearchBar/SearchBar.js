@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Paper from '@mui/material/Paper';
 import InputBase from '@mui/material/InputBase';
 import Divider from '@mui/material/Divider';
@@ -7,14 +7,33 @@ import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import DirectionsIcon from '@mui/icons-material/Directions';
 import ComboBoxExample from './ComboBoxExample'
+import {useDebounce} from 'react-use'
+import axios from 'axios'
 
 // https://www.digitalocean.com/community/tutorials/how-to-use-downshift-in-common-dropdown-use-cases
 
 import Downshift from 'downshift';
 
 function DownshiftTwo(){
-    const [state, setState] = useState([])
+    const [suggestions, setSuggestions] = useState([])
     const [text, setText] = useState('')
+    const [debouncedText, setDebouncedText] = useState('');
+
+    const [, cancel] = useDebounce(
+        () => {
+            setDebouncedText(text)
+        },
+        500,
+        [text]
+    );
+
+    useEffect(() => {
+        if (!debouncedText) {
+            return
+        }
+
+        fetchMovies(debouncedText)
+    }, [debouncedText])
 
     const inputOnChange = (event) => {
         setText(event.target.value)
@@ -23,38 +42,31 @@ function DownshiftTwo(){
             return
         }
 
-        fetchMovies(event.target.value)
     }
 
-    const fetchMovies = (movie) => {
-        // const moviesURL = `https://api.themoviedb.org/3/search/movie?api_key=APIKey&query=${movie}`;
-        // axios.get(moviesURL).then(response => {
-        //     this.setState({ movies: response.data.results })
-        // })
-
-        setState({ movies: [
-            { title: 'Harry Potter' },
-            { title: 'Net Moves' },
-            { title: 'Half of a yellow sun' },
-            { title: 'The Da Vinci Code' },
-            { title: 'Born a crime' },
-        ]})
+    const fetchMovies = (keyword) => {
+        const URL = `https://api.meeymap.com/map/v1/suggest-places?keyword=${keyword}`;
+        axios.get(URL).then(resp => {
+            setSuggestions(resp.data.data)
+        })
     }
 
-    const downshiftOnChange = (selectedMovie) => {
-        setText(selectedMovie.title)
+    const downshiftOnChange = (item) => {
+        setText(item.name)
+        axios.get(`https://api.meeymap.com/map/v1/place-detail-by-id?placeId=${item.place_id}`).then(resp => {
+            const {location, bounds} = _.get(resp, 'data.data.geometry') || {}
+        })
     }
 
 
     return (
         <Downshift onChange={downshiftOnChange} itemToString={item => {
-            console.log(item)
             return (item ? item.title : '')
         }}>
             {({ selectedItem, getInputProps, getItemProps, highlightedIndex, isOpen, inputValue, getLabelProps, getToggleButtonProps }) => (
-                <div className="flex items-center w-full h-[40px] pl-[10px]">
+                <div className="flex items-center w-full h-[40px] relative">
                     <input {...getInputProps({
-                        className: 'w-full',
+                        className: 'pl-[10px] w-full',
                         value: text,
                         placeholder: "Search movies",
                         onFocus: (e) => {
@@ -63,7 +75,6 @@ function DownshiftTwo(){
                         },
                         onChange: inputOnChange,
                         onKeyDown: (event) => {
-                            console.log(event.target.value)
                             switch (event.key) {
                                 case 'Enter': {
                                     event.preventDefault();
@@ -73,26 +84,26 @@ function DownshiftTwo(){
                             }
                         },
                     })} />
-                    {(isOpen || true) ? (
-                        <div className="downshift-dropdown">
+                    {isOpen ? (
+                        <Paper className="downshift-dropdown absolute w-full overflow-auto" style={{top: 48}}>
                             {
-                                state.movies
-                                    ?.filter(item => !inputValue || item.title.toLowerCase().includes(inputValue.toLowerCase()))
-                                    .slice(0, 10) // return just the first ten. Helps improve performance
+                                suggestions
+                                    // ?.filter(item => !inputValue || item.name.toLowerCase().includes(inputValue.toLowerCase()))
+                                    // .slice(0, 10) // return just the first ten. Helps improve performance
                                     // map the filtered movies and display their title
                                     .map((item, index) => (
                                         <div
-                                            className="dropdown-item"
+                                            className="dropdown-item px-12 py-8 truncate"
                                             {...getItemProps({ key: index, index, item })}
                                             style={{
                                                 backgroundColor: highlightedIndex === index ? 'lightgray' : 'white',
                                                 fontWeight: selectedItem === item ? 'bold' : 'normal',
                                             }}>
-                                            {item.title}
+                                            {item.name}
                                         </div>
                                     ))
                             }
-                        </div>
+                        </Paper>
                     ) : null}
                 </div>
             )}
