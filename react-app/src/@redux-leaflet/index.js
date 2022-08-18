@@ -19,3 +19,7 @@ export { LocateControl } from './components/LocateControl'
 export {default as reducer, useMapStore, getMap} from './store'
 
 export * from './utils'
+
+export {default as passMapClicked} from './hooks/passMapClicked'
+
+export {default as mapEmitter} from './emitter'

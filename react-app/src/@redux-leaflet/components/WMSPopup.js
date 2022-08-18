@@ -3,8 +3,12 @@ import { GeoJSON, useMapEvents } from 'react-leaflet'
 import { selectOverlaysPopups } from '../store/layersSlice'
 import L from 'leaflet'
 import { getPopups, selectPopupSelected } from '@redux-leaflet/store/popupsSlice'
+// import {} from '../'
+
+
 
 function WMSPopup(){
+  const [allow, setAllow] = useState(true)
   const popSelected = useSelector(selectPopupSelected)
 
   const dispatch = useDispatch()
@@ -27,8 +31,9 @@ function WMSPopup(){
   });
 
 
+
+
   if(popSelected) {
-    console.log(popSelected)
     return <GeoJSON data={popSelected.geometry}/>
   }
 

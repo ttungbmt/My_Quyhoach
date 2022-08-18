@@ -6,7 +6,7 @@ import Slider, {SliderThumb} from "@mui/material/Slider";
 function SliderControl(){
 
     return (
-        <Paper className="absolute flex flex-col justify-between items-center" sx={{zIndex: 999, bottom: 140, right: 10, width: 32, height: 180, p: 0.5}}>
+        <Paper className="absolute flex flex-col justify-between items-center" sx={{zIndex: 999, bottom: 280, right: 10, width: 32, height: 180, p: 0.5}}>
             {/*<IconButton disableRipple sx={{p: 0, mt: 1}}>
                 <MySvgIcon className="fa-solid fa-ellipsis-vertical text-[16px]" color="primary"/>
             </IconButton>

@@ -6,10 +6,9 @@ import {useUpdateEffect} from "react-use";
 import {useNavigate} from "react-router-dom";
 import useThuadatStore from "../../../../../app/main/map/SearchThuadat/useThuadatStore";
 import mapService from "app/services/mapService/mapService";
-import {geomToLatLngs} from "@redux-leaflet";
+import {geomToLatLngs, passMapClicked} from "@redux-leaflet";
 import L from 'leaflet'
 import {getCoord} from "@turf/invariant";
-
 
 
 export const getUrlLayer = (latlng, layer) => {
@@ -57,7 +56,11 @@ function ThuadatWMS() {
     // const [geometryId, geometry, setGeometry] = useThuadatStore('geometryId, geometry, setGeometry')
     const [feature, setFeature, getByLocation] = useThuadatStore('feature, setFeature, getByLocation')
 
+    const passed = passMapClicked()
+
     useMapEvent('click', ({latlng}) => {
+        if(!passed) return null
+
         getByLocation(latlng)
         // if (abortController.current) abortController.current.abort()
         //
@@ -83,51 +86,6 @@ function ThuadatWMS() {
         // })
     })
 
-    // useUpdateEffect(() => {
-    //     if(data?.id) {
-    //         navigate(`/maps/thong-tin-thua-dat/${request.id}`, {state: data});
-    //         setGeometry(data.geometry)
-    //     }
-    // }, [data?.id])
-    //
-
-    const positions = [
-        [
-            [
-                10.77479536425587,
-                106.62969589233397,
-            ],
-            [
-                10.77479536425587,
-                106.67364120483398,
-            ],
-            [
-                10.823358297175226,
-                106.67364120483398,
-            ],
-            [
-                10.823358297175226,
-                106.62969589233397,
-            ],
-            [
-                10.77479536425587,
-                106.62969589233397,
-            ]
-        ]
-    ]
-
-    // useEffect(() => {
-    //     if(feature) {
-    //         console.log(L.version)
-    //         let polygon = L.polygon(geomToLatLngs(feature?.geometry)[0], {
-    //             showMeasurements: true
-    //         })
-    //             .addTo(map)
-    //             .showMeasurements();
-    //     }
-    // }, [JSON.stringify(feature)])
-
-
     const polygonOptions = {
         showMeasurements: true,
         measurementOptions: {
@@ -139,7 +97,6 @@ function ThuadatWMS() {
 
 
     return feature?.geometry && <Polygon key={feature.id} {...polygonOptions} positions={geomToLatLngs(feature?.geometry)[0]} pathOptions={{color: '#ff008c', fillColor: '#ff008c8c'}} />
-    // return null
 }
 
 export default ThuadatWMS

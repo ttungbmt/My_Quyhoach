@@ -13,6 +13,7 @@ import { useUpdateEffect } from 'react-use'
 import ThuadatWMS from "@base/theme-layouts/map/components/map/ThuadatWMS";
 import BasemapControl from './BasemapControl'
 import SliderControl from "@base/theme-layouts/map/components/map/SliderControl";
+import {MeasureControl} from "@base/theme-layouts/map/components/map/MeasureControl";
 
 const Root = styled('div')(({ theme, opened }) => ({
   height: '100%'
@@ -40,7 +41,6 @@ function MapLayout(props) {
           <MapContainer {...mapOptions}>
             <OnChangeBounds bounds={bounds}/>
             <MapEvents />
-            {/*<ZoomControl position="bottomright"/>*/}
 
             {basemap && (<TileLayer key={basemap.id} {...basemap}/>)}
 
@@ -53,7 +53,7 @@ function MapLayout(props) {
 
             <MapRoutes />
             <ThuadatWMS />
-
+            <MeasureControl position="bottomright"/>
           </MapContainer>
         </>
       )}

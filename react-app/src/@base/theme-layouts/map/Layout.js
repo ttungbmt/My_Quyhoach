@@ -31,7 +31,7 @@ import SideMenu from './components/side-menu/SideMenu'
 import MapLayout from './components/map/MapLayout'
 import {MapboxLayout} from '@redux-mapbox'
 import SaveThuadatLayout from "../../../app/main/map/InfoThuadat/SaveThuadatLayout";
-import SearchBar from "./components/SearchBar";
+import SearchBar from "@base/components/SearchBar/SearchBar";
 import NavbarToggleFab from "@base/theme-layouts/shared-components/NavbarToggleFab";
 import Hidden from "@mui/material/Hidden";
 
