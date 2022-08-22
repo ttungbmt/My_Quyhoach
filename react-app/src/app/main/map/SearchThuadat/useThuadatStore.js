@@ -109,7 +109,8 @@ const useThuadatStore = create((set, get) => ({
 
     handleResp: (feature) => {
         set({feature})
-        if(getMap().getZoom() < 16) feature?.geometry && getMap().fitBounds(getBounds(feature.geometry))
+        // if(getMap().getZoom() < 16) feature?.geometry && getMap().fitBounds(getBounds(feature.geometry))
+        feature?.geometry && getMap().fitBounds(getBounds(feature.geometry))
         history.push(`/maps/thong-tin-thua-dat/${feature.id ?? ''}`)
     },
         // OLD ---------------------------------------------------------------------------------

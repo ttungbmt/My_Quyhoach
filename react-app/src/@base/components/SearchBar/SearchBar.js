@@ -9,13 +9,26 @@ import DirectionsIcon from '@mui/icons-material/Directions';
 import ComboBoxExample from './ComboBoxExample'
 import {useDebounce} from 'react-use'
 import axios from 'axios'
+import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
+import {toggleLayer} from "@redux-leaflet/store/layersSlice";
 
 // https://www.digitalocean.com/community/tutorials/how-to-use-downshift-in-common-dropdown-use-cases
 
 import Downshift from 'downshift';
+import useThuadatStore from "../../../app/main/map/SearchThuadat/useThuadatStore";
+import Button from "@mui/material/Button";
+import {useDispatch} from "react-redux";
+
+function checkIfValidLatLng(str) {
+    // Regular expression to check if string is a latitude and longitude
+    const regexExp = /^((\-?|\+?)?\d+(\.\d+)?),\s*((\-?|\+?)?\d+(\.\d+)?)$/gi;
+
+    return regexExp.test(str);
+}
 
 function DownshiftTwo(){
     const [suggestions, setSuggestions] = useState([])
+    const getByLocation = useThuadatStore('getByLocation')
     const [text, setText] = useState('')
     const [debouncedText, setDebouncedText] = useState('');
 
@@ -32,7 +45,7 @@ function DownshiftTwo(){
             return
         }
 
-        fetchMovies(debouncedText)
+        fetchSuggestions(debouncedText)
     }, [debouncedText])
 
     const inputOnChange = (event) => {
@@ -44,17 +57,23 @@ function DownshiftTwo(){
 
     }
 
-    const fetchMovies = (keyword) => {
-        const URL = `https://api.meeymap.com/map/v1/suggest-places?keyword=${keyword}`;
-        axios.get(URL).then(resp => {
-            setSuggestions(resp.data.data)
-        })
+    const fetchSuggestions = (keyword) => {
+        if(checkIfValidLatLng(keyword)){
+            let latlng = keyword.split(',').map(v => _.toNumber(v))
+            getByLocation({lat: latlng[0], lng: latlng[1]})
+        } else {
+            const URL = `https://api.meeymap.com/map/v1/suggest-places?keyword=${keyword}`;
+            axios.get(URL).then(resp => {
+                setSuggestions(resp.data.data)
+            })
+        }
     }
 
     const downshiftOnChange = (item) => {
         setText(item.name)
         axios.get(`https://api.meeymap.com/map/v1/place-detail-by-id?placeId=${item.place_id}`).then(resp => {
             const {location, bounds} = _.get(resp, 'data.data.geometry') || {}
+            getByLocation(location)
         })
     }
 
@@ -68,7 +87,7 @@ function DownshiftTwo(){
                     <input {...getInputProps({
                         className: 'pl-[10px] w-full',
                         value: text,
-                        placeholder: "Search movies",
+                        placeholder: "Nhập địa chỉ, tọa độ vệ tinh để tìm kiếm",
                         onFocus: (e) => {
                             // console.log(getToggleButtonProps().onClick())
 
@@ -78,12 +97,14 @@ function DownshiftTwo(){
                             switch (event.key) {
                                 case 'Enter': {
                                     event.preventDefault();
-                                    console.log(111)
-                                    // do stuff here
+                                    fetchSuggestions(event.target.value)
                                 }
                             }
                         },
                     })} />
+                    <IconButton onClick={() => fetchSuggestions(debouncedText)}>
+                        <FuseSvgIcon color="action">heroicons-outline:search</FuseSvgIcon>
+                    </IconButton>
                     {isOpen ? (
                         <Paper className="downshift-dropdown absolute w-full overflow-auto" style={{top: 48}}>
                             {
@@ -113,15 +134,23 @@ function DownshiftTwo(){
 
 
 function SearchBar() {
+    const dispatch = useDispatch()
+
+    const [toggle, setToggle] = useState(false)
+    const onToggleLayer = () => {
+        dispatch(toggleLayer())
+        setToggle(!toggle)
+    }
+
     return (
-        <Paper
-            className="absolute z-50 m-12 ml-20"
-            component="form"
-            sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 400, backgroundColor: '#fffffff2' }}
-            elevation={1}
-        >
-            <DownshiftTwo />
-            {/*<InputBase
+        <div className="absolute z-50 m-12 ml-20 flex gap-12">
+            <Paper
+                component="form"
+                sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 400, backgroundColor: '#fffffff2' }}
+                elevation={1}
+            >
+                <DownshiftTwo />
+                {/*<InputBase
                 sx={{ ml: 2, flex: 1 }}
                 placeholder="Nhập địa chỉ, tọa độ vệ tinh để tìm kiếm"
                 inputProps={{ 'aria-label': 'search google maps' }}
@@ -129,7 +158,10 @@ function SearchBar() {
             <IconButton type="submit" sx={{ p: '10px' }} aria-label="search">
                 <SearchIcon />
             </IconButton>*/}
-        </Paper>
+
+            </Paper>
+            <Button variant={toggle ? 'outlined' : 'contained'} color="primary" onClick={onToggleLayer}>Bản đồ QH 2030</Button>
+        </div>
     );
 }
 

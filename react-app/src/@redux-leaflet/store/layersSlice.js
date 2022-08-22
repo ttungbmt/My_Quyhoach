@@ -56,14 +56,26 @@ const layersSlice = createSlice({
       })
 
       layersAdapter.setAll(state, _.map(layers, l => ({id: l.name ?? nanoid(), type: l.type ?? 'xyz', baselayer: true, ...l})))
-    }
+    },
+
+    setTransparency(state, { payload }){
+      _.filter(state.entities, e => _.includes(['tddo:v_quyhoach', 'tddo:quyhoach_2030'], e.layers)).map(e => {
+        e.opacity = payload.opacity
+      })
+    },
+
+    toggleLayer(state, { payload }){
+      _.filter(state.entities, e => e.layers === 'tddo:quyhoach_2030').map(e => {
+        e.selected = !e.selected
+      })
+    },
   },
   extraReducers: {
     [getLayers.fulfilled]: layersAdapter.setAll
   }
 })
 
-export const { setBasemapId, addBaseLayers, addLayers } = layersSlice.actions;
+export const { setBasemapId, addBaseLayers, addLayers, setTransparency, toggleLayer } = layersSlice.actions;
 
 export const selectBasemapId = ({ leaflet }) => leaflet.layers.basemapId;
 
