@@ -91,7 +91,7 @@ function Layout(props) {
 
           <Hidden lgDown>
             <div className="sticky top-0 z-99">
-              <SettingsPanel />
+              {/*<SettingsPanel />*/}
             </div>
           </Hidden>
 

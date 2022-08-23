@@ -14,6 +14,7 @@ import ThuadatWMS from "@base/theme-layouts/map/components/map/ThuadatWMS";
 import BasemapControl from './BasemapControl'
 import SliderControl from "@base/theme-layouts/map/components/map/SliderControl";
 import {MeasureControl} from "@base/theme-layouts/map/components/map/MeasureControl";
+import DrawControl from "./DrawControl/DrawControl";
 
 const Root = styled('div')(({ theme, opened }) => ({
   height: '100%'
@@ -54,6 +55,8 @@ function MapLayout(props) {
             <MapRoutes />
             <ThuadatWMS />
             <MeasureControl position="bottomright"/>
+
+            <DrawControl position="topleft"/>
           </MapContainer>
         </>
       )}

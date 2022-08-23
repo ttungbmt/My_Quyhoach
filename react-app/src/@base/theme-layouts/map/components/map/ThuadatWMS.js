@@ -1,4 +1,4 @@
-import {useMapEvent, GeoJSON, Polygon, useMap} from "react-leaflet";
+import {useMapEvent, GeoJSON, Polygon, useMap, useMapEvents} from "react-leaflet";
 import {useQuery} from "react-query";
 import {useEffect, useRef, useState} from "react";
 import axios from 'axios'
@@ -86,6 +86,18 @@ function ThuadatWMS() {
         // })
     })
 
+    // useMapEvents({
+    //     ['click']({latlng}){
+    //         console.log(222)
+    //     },
+    //     ['measure:start'](){
+    //         console.log(111)
+    //     },
+    //     ['measure:end'](){
+    //         console.log(111)
+    //     },
+    // })
+
     const polygonOptions = {
         showMeasurements: true,
         measurementOptions: {
@@ -96,7 +108,12 @@ function ThuadatWMS() {
     }
 
 
-    return feature?.geometry && <Polygon key={feature.id} {...polygonOptions} positions={geomToLatLngs(feature?.geometry)[0]} pathOptions={{color: '#ff008c', fillColor: '#ff008c8c'}} />
+    return feature?.geometry && <Polygon
+        key={feature.id}
+        {...polygonOptions}
+        positions={geomToLatLngs(feature?.geometry)[0]} pathOptions={{color: '#ff008c', fillColor: '#ff008c8c'}}
+        pmIgnore={true}
+    />
 }
 
 export default ThuadatWMS

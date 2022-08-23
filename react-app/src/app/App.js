@@ -22,6 +22,7 @@ import { QueryClient, QueryClientProvider, useQuery } from 'react-query'
 import { useAsync } from 'react-use'
 import axios from 'axios'
 import useAppConfig from './useAppConfig'
+import history from '@history'
 
 // import axios from 'axios';
 /**
@@ -52,6 +53,8 @@ const queryClient = new QueryClient({
     },
   },
 })
+
+window.reactHistory = history
 
 const App = () => {
   const user = useSelector(selectUser);

@@ -4,6 +4,9 @@ import 'leaflet-extra-markers/dist/js/leaflet.extra-markers'
 import 'leaflet-measure-path/leaflet-measure-path.css'
 import 'leaflet-measure-path/leaflet-measure-path.js'
 
+import '@geoman-io/leaflet-geoman-free';
+import '@geoman-io/leaflet-geoman-free/dist/leaflet-geoman.css';
+
 import 'leaflet.locatecontrol/dist/L.Control.Locate.css'
 import 'leaflet.locatecontrol/dist/L.Control.Locate.min'
 

@@ -242,6 +242,8 @@ L.MeasureAction = L.Handler.extend({
     },
     _onMouseMove: function (event) {
         var latlng = event.latlng;
+        this._movingLatLong = event.latlng;
+
         if (this._trail.points.length > 0) {
             if (this._startMove) {
                 this._directPath.setLatLngs(this._trail.points.concat(latlng));
@@ -249,8 +251,49 @@ L.MeasureAction = L.Handler.extend({
                 this._directPath.setLatLngs([latlng]);
                 this._startMove = true;
             }
+
+
+            if (this._tempPoint){
+                this._map.removeLayer(this._tempPoint);
+            }
+
+            this._tempPoint = L.featureGroup();
+            this._tempPoint.addTo(this._map);
+            this._calculateDistance();
+
+            let text;
+
+            if (this.options.model === "area" && this._trail.points.length > 1) {
+                text = this._getAreaString(this._trail.points.concat(latlng))
+            }
+
+            if (this.options.model !== "area") {
+                text = `${this._result.distance.toFixed(2)} km`
+            }
+
+            let tooltipMarker = L.circleMarker(latlng, {
+                color: 'red',
+                radius: 2
+            }).addTo(this._tempPoint)
+
+            if(text) tooltipMarker.bindTooltip(text).openTooltip();
         }
     },
+
+    _calculateDistance: function(){
+        let f1 = this._lastPoint.lat, l1 = this._lastPoint.lng, f2 = this._movingLatLong.lat, l2 = this._movingLatLong.lng;
+        // distance
+        let toRadian = Math.PI / 180;
+        let R = 6371; // kilometres
+        let deltaF = (f2 - f1)*toRadian;
+        let deltaL = (l2 - l1)*toRadian;
+        let a = Math.sin(deltaF/2) * Math.sin(deltaF/2) + Math.cos(f1*toRadian) * Math.cos(f2*toRadian) * Math.sin(deltaL/2) * Math.sin(deltaL/2);
+        let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+        let distance = R * c;
+
+        this._result = { distance };
+    },
+
     _enableMeasure: function () {
         this._trail = {
             overlays: [],
@@ -258,15 +301,31 @@ L.MeasureAction = L.Handler.extend({
         };
         var map = this._map;
         L.DomUtil.addClass(map._container, "leaflet-measure-map");
+        L.DomEvent.on(this._map._container, 'keydown', this._escape, this);
         map.contextMenu && map.contextMenu.disable();
         this._measurementStarted = true;
         map.on("click", this._onMouseClick, this);
-        map.on("dblclick contextmenu", this._finishMeasure, this);
+        map.on("dblclick", this._finishMeasure, this);
+        map.on("contextmenu", this._deleteLastPoint, this);
         map.doubleClickZoom.disable();
         map.on("mousemove", this._onMouseMove, this);
-
-        map.fire('measure:enable');
+        map.fire('measure:enable')
     },
+
+    _deleteLastPoint: function(){
+        if(this._trail.points.length > 1){
+            this._trail.points = this._trail.points.slice(0, -1)
+            this._measurePath.setLatLngs(this._trail.points)
+        }
+
+        if(this._trail.overlays.length > 4){
+            // Remove label, marker
+            this._trail.overlays.slice(-2).map(layer => this._map.removeLayer(layer))
+            this._trail.overlays = this._trail.overlays.slice(0, -2)
+        }
+
+    },
+
     _disableMeasure: function () {
         var map = this._map;
         L.DomUtil.removeClass(map.getContainer(), "leaflet-measure-map");
@@ -277,10 +336,11 @@ L.MeasureAction = L.Handler.extend({
         map.doubleClickZoom.enable();
         this._measurementStarted = this._startMove = false;
         this.disable();
-
-        map.fire('measure:disable');
     },
+
     _finishMeasure: function (event) {
+        this._map.removeLayer(this._tempPoint);
+
         if (this._trail.points.length > 0) {
             if (this._trail.points.length > 1) {
                 if (!event || event.type === "contextmenu") {
@@ -302,11 +362,14 @@ L.MeasureAction = L.Handler.extend({
                     );
                 }
                 this._directPath && this._map.removeLayer(this._directPath);
+                this._measurePath.showMeasurements()
             } else {
                 this._clearOverlay.call(this);
             }
         }
         this._disableMeasure();
+
+        this._map.fire('measure:disable')
     },
     _resetDirectPath: function (latlng) {
         if (!this._directPath) {
@@ -328,6 +391,8 @@ L.MeasureAction = L.Handler.extend({
             }
             this._map.addLayer(this._directPath);
             this._trail.overlays.push(this._directPath);
+
+            this._directPath.showMeasurements()
         } else {
             this._directPath.addLatLng(latlng);
         }
@@ -356,6 +421,7 @@ L.MeasureAction = L.Handler.extend({
         }
         this._resetDirectPath(latlng);
     },
+
     _addMarker: function (latLng) {
         var marker = new L.CircleMarker(latLng, {
             color: this.options.color,
@@ -387,6 +453,7 @@ L.MeasureAction = L.Handler.extend({
         var i = 0,
             overlays = this._trail.overlays,
             length;
+
         for (length = overlays.length; i < length; i++) {
             this._map.removeLayer(overlays[i]);
         }
@@ -454,6 +521,12 @@ L.MeasureAction = L.Handler.extend({
                 : "",
         ].join("");
     },
+
+    _escape: function(event){
+        if (event.keyCode === 27){
+            this._finishMeasure(event)
+        }
+    }
 });
 
 L.measureAction = function (map, options) {

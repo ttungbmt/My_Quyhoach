@@ -1,0 +1,35 @@
+{
+  "tooltips": {
+    "placeMarker": "Click để đặt điểm đánh dấu",
+    "firstVertex": "Click để đặt đỉnh đầu tiên",
+    "continueLine": "Click để tiếp tục vẽ",
+    "finishLine": "Click vào điểm đánh dấu bất kỳ để kết thúc",
+    "finishPoly": "Click điểm đầu tiên để kết thúc",
+    "finishRect": "Click để kết thúc",
+    "startCircle": "Click để đặt vị trí tâm hình tròn",
+    "finishCircle": "Click để kết thúc hình tròn",
+    "placeCircleMarker": "Click để đặt điểm dạng hình tròn",
+    "placeText": "Click để đặt chữ"
+  },
+  "actions": {
+    "finish": "Kết thúc",
+    "cancel": "Hủy",
+    "removeLastVertex": "Xóa điểm cuối"
+  },
+  "buttonTitles": {
+    "drawMarkerButton": "Vẽ điểm đánh dấu",
+    "drawPolyButton": "Vẽ vùng",
+    "drawLineButton": "Vẽ đường",
+    "drawCircleButton": "Vẽ hình tròn",
+    "drawRectButton": "Vẽ hình vuông",
+    "editButton": "Chỉnh sửa dữ liệu",
+    "dragButton": "Di chuyển dữ liệu",
+    "cutButton": "Cắt dữ liệu",
+    "deleteButton": "Xóa dữ liệu",
+    "drawCircleMarkerButton": "Vẽ điểm dạng hình tròn",
+    "snappingButton": "Bắt dính điểm đánh dấu đã kéo vào các dữ liệu và đỉnh khác",
+    "pinningButton": "Ghim các đỉnh được chia sẻ với nhau",
+    "rotateButton": "Xoay dữ liệu",
+    "drawTextButton": "Vẽ chữ"
+  }
+}

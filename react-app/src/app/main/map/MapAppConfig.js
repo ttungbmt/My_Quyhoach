@@ -8,6 +8,7 @@ const RanhgioiHc = lazy(() => import('./RanhgioiHc/RanhgioiHc.js'));
 const Info = lazy(() => import('./Info/Info'));
 const InfoThuadat = lazy(() => import('./InfoThuadat/InfoThuadat'));
 const MyData = lazy(() => import('./MyData/MyData'));
+const MyDataForm = lazy(() => import('./MyDataForm/MyDataForm'));
 // const Direction = lazy(() => import('@base/components/Direction/Direction'));
 const Direction = require('@base/components/Direction/Direction').default;
 
@@ -57,6 +58,10 @@ const MapsAppConfig = {
     {
       path: 'maps/my-data',
       element: <MyData />,
+    },
+    {
+      path: 'maps/my-data/create',
+      element: <MyDataForm />,
     },
   ],
 };

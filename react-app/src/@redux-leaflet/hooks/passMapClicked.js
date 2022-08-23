@@ -6,18 +6,27 @@ function passMapClicked(){
 
     useEffect(() => {
         mapEmitter.on('measure:enable', () => {
-            console.log(1111)
             setPassed(false)
         })
 
         mapEmitter.on('measure:disable', () => {
-            console.log(2222)
             setPassed(true)
         })
+
+        mapEmitter.on('pm:globaldrawmodetoggled', ({enabled}) => {
+            setPassed(!enabled)
+        })
+
+        mapEmitter.on('pm:globaleditmodetoggled', ({enabled}) => {
+            setPassed(!enabled)
+        })
+
 
         return () => {
             delete mapEmitter['measure:enable']
             delete mapEmitter['measure:disable']
+            delete mapEmitter['pm:globaldrawmodetoggled']
+            delete mapEmitter['pm:globaleditmodetoggled']
         }
     }, [])
 

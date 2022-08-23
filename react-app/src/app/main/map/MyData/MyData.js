@@ -8,7 +8,7 @@ function SearchThuadat(){
     const handleChangeTab = (event, value) => setTabIndex(value);
 
     const tabs = [
-        {label: 'Thửa đất'},
+        {label: 'Dữ liệu'},
         {label: 'Yêu thích'},
     ]
 
